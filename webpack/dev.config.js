@@ -1,7 +1,6 @@
 const devServerConfig = (config) => {
   return {
     ...config,
-    open: false,
     compress: true,
     proxy: {
       "/api": {
