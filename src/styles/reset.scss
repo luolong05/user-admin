@@ -1,4 +1,5 @@
-@import "./theme";
+$bodyBgColor: rgb(243,243,243);
+$baseColor: #fff;
 
 html, body {
   margin: 0;
@@ -7,7 +8,7 @@ html, body {
   height: 100%;
   font-family: "Avenir, Helvetica, Arial, sans-serif";
   font-size: 14px;
-  background: rgb(243,243,243);
+  background: $bodyBgColor;
 }
 
 * {
@@ -39,14 +40,14 @@ input, button, select, textarea {
 }
 
 input:focus, textarea:focus {
-  border-color: $color-primary !important;
+  border-color: $baseColor;
   outline: none !important;
 }
 
 a {
   text-decoration: none;
   outline: none;
-  color: $color-default;
+  color: $baseColor;
   &:hover,
   &:active,
   &:focus {
