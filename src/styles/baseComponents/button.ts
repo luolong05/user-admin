@@ -1,51 +1,19 @@
-import { colors } from "./config";
+import globalTheme from "@/styles/global/theme";
 
-const theme = {
-  enable: {
-    default: {
-      border: `1px solid ${colors.default}`,
-      backgroundColor: colors.default,
-      fontColor: "#606266",
-    },
-    error: {
-      border: `1px solid ${colors.error}`,
-      backgroundColor: colors.error,
-      fontColor: "#fff",
-    },
-    warning: {},
-    primary: {
-      border: `1px solid ${colors.primary}`,
-      backgroundColor: colors.primary,
-      fontColor: "#fff",
-    },
-  },
-  disable: {
-    default: {
-      border: `1px solid ${colors.default}`,
-      backgroundColor: colors.default,
-      fontColor: "#606266",
-      fontSize: "14px",
-    },
-    error: {
-      border: `1px solid ${colors.error}`,
-      backgroundColor: colors.error,
-      fontColor: "#fff",
-    },
-    warning: {},
-    primary: {},
-  },
-  sm: {
-    padding: "4px 10px",
-    fontSize: "12px",
-  },
-  md: {
-    padding: "6px 14px",
-    fontSize: "14px",
-  },
-  lg: {
-    padding: "8px 18px",
-    fontSize: "16px",
-  },
+export default {
+  defaultBorder: `1px solid ${globalTheme.colorDefault}`,
+  defaultBackgroundColor: globalTheme.colorDefault,
+  defaultFontColor: "#606266",
+  primaryBorder: `1px solid ${globalTheme.colorPrimary}`,
+  primaryBackgroundColor: globalTheme.colorPrimary,
+  primaryFontColor: "#fff",
+  errorBorder: `1px solid ${globalTheme.colorError}`,
+  errorBackgroundColor: globalTheme.colorError,
+  errorFontColor: "#fff",
+  paddingSm: "4px 10px",
+  fontSizeSm: "12px",
+  paddingMd: "6px 14px",
+  fontSizeMd: "14px",
+  paddingLg: "8px 18px",
+  fontSizeLg: "16px",
 };
-
-export default theme;

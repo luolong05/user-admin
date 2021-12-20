@@ -1,35 +1,36 @@
 import React from "react";
-import styled from "styled-components";
-import { buttonTheme } from "../theme";
-import { getKeyValue } from "@/utils/ts";
+import ButtonStyled from "./button.styled";
 
+type btnTypes = "default" | "error" | "warning" | "primary";
+type btnSizes = "sm" | "md" | "lg";
 interface buttonProps {
-  type: "default" | "error" | "warning" | "primary";
-  size: "sm" | "md" | "lg";
-  disabled: boolean;
-  text: string;
+  type?: btnTypes;
+  size?: btnSizes;
+  disabled?: boolean | undefined;
+  className?: string;
   onClick: (event: any) => void;
 }
 
-interface btnThemByStatus {
-  border: string;
-  backgroundColor: string;
-  fontColor: string;
-}
+const Button: React.FC<buttonProps> = ({ className, children, ...props }) => {
+  const getClassNames = () => {
+    return [
+      className,
+      `btn-${props.type || "default"}`,
+      `btn-${props.size || "md"}`,
+    ];
+  };
 
-const getBtnThemByStatus: (
-  disabled: boolean,
-  type: buttonProps["type"]
-) => btnThemByStatus = (disabled, type) => {
-  const status: "disable" | "enable" = disabled ? "disable" : "enable";
-  const themByDisabled = getKeyValue(buttonTheme, status);
-  const themByType = getKeyValue(themByDisabled, type);
+  const classNames = getClassNames();
+  const buttonStyledProps = {
+    disabled: props.disabled,
+    onClick: props.onClick,
+  };
 
-  return themByType as btnThemByStatus;
+  return (
+    <ButtonStyled {...buttonStyledProps} className={classNames.join(" ")}>
+      {children}
+    </ButtonStyled>
+  );
 };
 
-const Button = styled.button`
-  border: ${(props: buttonProps) =>
-    getBtnThemByStatus(props.disabled, props.type).border};
-  cursor: pointer;
-`;
+export default Button;
