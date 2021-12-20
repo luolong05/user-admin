@@ -2,9 +2,17 @@ import "react-app-polyfill/ie11";
 import "react-app-polyfill/stable";
 import React from "react";
 import ReactDOM from "react-dom";
-import "./styles/main.scss";
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "@/styles/global";
+import GlobalTheme from "@/styles/global/theme";
+import HomePage from "@modules/home";
 
 ReactDOM.render(
-  <React.StrictMode></React.StrictMode>,
+  <ThemeProvider theme={GlobalTheme}>
+    <React.StrictMode>
+      <GlobalStyle />
+      <HomePage />
+    </React.StrictMode>
+  </ThemeProvider>,
   document.getElementById("root")
 );

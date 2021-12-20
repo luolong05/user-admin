@@ -1,3 +1,4 @@
+export default `
 .text-center {
   text-align: center;
 }
@@ -58,4 +59,4 @@ img {
 
 .pointer {
   cursor: pointer;
-}
+}`;

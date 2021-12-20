@@ -1,5 +1,4 @@
-@import "./theme";
-
+export default `
 html, body {
   margin: 0;
   padding: 0;
@@ -7,7 +6,7 @@ html, body {
   height: 100%;
   font-family: "Avenir, Helvetica, Arial, sans-serif";
   font-size: 14px;
-  background: rgb(243,243,243);
+  background: $bodyBgColor;
 }
 
 * {
@@ -39,14 +38,14 @@ input, button, select, textarea {
 }
 
 input:focus, textarea:focus {
-  border-color: $color-primary !important;
+  border-color: #fff;
   outline: none !important;
 }
 
 a {
   text-decoration: none;
   outline: none;
-  color: $color-default;
+  color: #fff;
   &:hover,
   &:active,
   &:focus {
@@ -87,3 +86,4 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 1000px white inset !important;
 }
+`;
