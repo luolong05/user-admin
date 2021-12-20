@@ -5,13 +5,13 @@ import ReactDOM from "react-dom";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "@/styles/global";
 import GlobalTheme from "@/styles/global/theme";
-import HomePage from "@modules/home";
+import UserForm from "@modules/userForm";
 
 ReactDOM.render(
   <ThemeProvider theme={GlobalTheme}>
     <React.StrictMode>
       <GlobalStyle />
-      <HomePage />
+      <UserForm />
     </React.StrictMode>
   </ThemeProvider>,
   document.getElementById("root")
