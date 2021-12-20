@@ -8,7 +8,7 @@ interface buttonProps {
   size?: btnSizes;
   disabled?: boolean | undefined;
   className?: string;
-  onClick: (event: any) => void;
+  onClick?: (event: any) => void;
 }
 
 const Button: React.FC<buttonProps> = ({ className, children, ...props }) => {
