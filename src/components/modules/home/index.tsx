@@ -7,7 +7,7 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <Button size="lg" type="primary" onClick={handleBtnClick}>
+    <Button onClick={handleBtnClick}>
       button
     </Button>
   );

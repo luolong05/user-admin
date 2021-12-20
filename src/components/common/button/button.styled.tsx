@@ -2,18 +2,18 @@ import styled from "styled-components";
 import stylesConf from "@styles/button";
 
 const buttonDisabledStyle = `
-  color: rgba(0, 0, 0, 0.4);
-  border-color: #ddd;
-  background: #e8e8e8;
+  color: ${stylesConf.disableFontColor};
+  border-color: ${stylesConf.disabledBorderColor};
+  background: ${stylesConf.disabledBackgroundColor};
   cursor: not-allowed;
 `;
 
 export default styled.button`
-  border: 1px solid transparent;
-  padding: 4px 15px;
-  background-color: #fff;
-  color: ${(props) => props.theme.colorDefault};
-  font-size: 12px;
+  border: ${stylesConf.defaultBorder};
+  padding: ${stylesConf.paddingMd};
+  background-color: ${stylesConf.defaultBackgroundColor};
+  color: ${stylesConf.defaultFontColor};
+  font-size: ${stylesConf.fontSizeMd};
   border-radius: 2px;
   cursor: pointer;
   &:hover {
