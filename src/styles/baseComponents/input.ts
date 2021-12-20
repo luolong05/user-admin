@@ -1,4 +1,4 @@
-import { colors } from "./index";
+import { colors } from "./config";
 
 export default {
   default: {

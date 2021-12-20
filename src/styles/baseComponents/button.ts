@@ -1,4 +1,4 @@
-import { colors } from "./index";
+import { colors } from "./config";
 
 const theme = {
   enable: {
@@ -13,7 +13,11 @@ const theme = {
       fontColor: "#fff",
     },
     warning: {},
-    primary: {},
+    primary: {
+      border: `1px solid ${colors.primary}`,
+      backgroundColor: colors.primary,
+      fontColor: "#fff",
+    },
   },
   disable: {
     default: {
@@ -32,12 +36,15 @@ const theme = {
   },
   sm: {
     padding: "4px 10px",
+    fontSize: "12px",
   },
   md: {
     padding: "6px 14px",
+    fontSize: "14px",
   },
   lg: {
     padding: "8px 18px",
+    fontSize: "16px",
   },
 };
 
