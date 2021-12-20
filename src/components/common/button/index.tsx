@@ -12,22 +12,22 @@ interface buttonProps {
 }
 
 const Button: React.FC<buttonProps> = ({ className, children, ...props }) => {
-  const getClassNames = () => {
+  const getClassNames: () => string[] = () => {
     return [
-      className,
+      className || '',
       `btn-${props.type || "default"}`,
       `btn-${props.size || "md"}`,
-    ];
+    ].filter(item => !!item);
   };
 
-  const classNames = getClassNames();
+  const classNames: string[] = getClassNames();
   const buttonStyledProps = {
     disabled: props.disabled,
     onClick: props.onClick,
   };
 
   return (
-    <ButtonStyled {...buttonStyledProps} className={classNames.join(" ")}>
+    <ButtonStyled {...buttonStyledProps} className={classNames.join(" ")} onChange={e => {}}>
       {children}
     </ButtonStyled>
   );

@@ -2,9 +2,9 @@ import styled from "styled-components";
 import stylesConf from "@styles/button";
 
 const buttonDisabledStyle = `
-  color: ${stylesConf.disableFontColor};
   border-color: ${stylesConf.disabledBorderColor};
   background: ${stylesConf.disabledBackgroundColor};
+  color: ${stylesConf.disableFontColor};
   cursor: not-allowed;
 `;
 
@@ -14,7 +14,7 @@ export default styled.button`
   background-color: ${stylesConf.defaultBackgroundColor};
   color: ${stylesConf.defaultFontColor};
   font-size: ${stylesConf.fontSizeMd};
-  border-radius: 2px;
+  border-radius: ${stylesConf.borderRadius};
   cursor: pointer;
   &:hover {
   }
