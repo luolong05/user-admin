@@ -4,9 +4,14 @@ export const UserFormWrapStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
-  width: 100vw;
-  height: 100vh;
+  @media (min-width: 768px) {
+    margin-top: 100px;
+    width: 100vw;
+    height: 100vh;
+  }
+  @media (max-width: 768px) {
+    margin: 50px 12px 0;
+  }
 `;
 
 export const UserFormStyled = styled.form`
@@ -14,6 +19,9 @@ export const UserFormStyled = styled.form`
   padding: 30px;
   width: 400px;
   border-radius: 4px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const UserFormResultStyled = styled.div`
