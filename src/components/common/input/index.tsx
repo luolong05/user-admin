@@ -3,6 +3,8 @@ import InputStyled from "./input.styled";
 
 interface inputProps {
   value?: string;
+  id?: string;
+  name?: string;
   htmlType?: string;
   type?: string;
   size?: string;
