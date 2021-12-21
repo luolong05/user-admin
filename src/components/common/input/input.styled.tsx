@@ -7,6 +7,7 @@ export default styled.input`
   width: 100%;
   background-color: ${stylesConf.backgroundColor};
   color: ${stylesConf.color};
+  border-radius: 2px;
   &:focus {
     border-color: ${stylesConf.activeBorderColor};
   }
