@@ -8,6 +8,7 @@ interface formItemForInputProps extends inputProps {
   labelFontSize?: string;
   labelFontColor?: string;
   labelTextAlign?: string;
+  name: string;
   inputClassName?: string;
   flexDirection?: 'row' | 'column';
 }
