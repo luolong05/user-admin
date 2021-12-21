@@ -2,7 +2,6 @@ import React from "react";
 import {fireEvent, render} from "@testing-library/react";
 import Input from "./index";
 
-
 describe('Check the classname of the input by type/size/status', () => {
   const onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (evt) => {
     console.log("event.value: ", evt.target.value)
