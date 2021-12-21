@@ -6,12 +6,13 @@ type btnSizes = "sm" | "md" | "lg";
 interface buttonProps {
   type?: btnTypes;
   size?: btnSizes;
+  htmlType?: "button" | "submit" | "reset" | undefined;
   disabled?: boolean | undefined;
   className?: string;
-  onClick?: (event: any) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-const Button: React.FC<buttonProps> = ({ className, children, ...props }) => {
+const Button: React.FC<buttonProps> = ({ htmlType, className, children, ...props }) => {
   const getClassNames: () => string[] = () => {
     return [
       className || '',
@@ -27,7 +28,7 @@ const Button: React.FC<buttonProps> = ({ className, children, ...props }) => {
   };
 
   return (
-    <ButtonStyled {...buttonStyledProps} className={classNames.join(" ")} onChange={e => {}}>
+    <ButtonStyled {...buttonStyledProps} type={htmlType} className={classNames.join(" ")}>
       {children}
     </ButtonStyled>
   );
