@@ -7,7 +7,7 @@ export default {
   defaultBackgroundColor: "#fff",
   primaryBackgroundColor: globalTheme.colorPrimary,
   errorBackgroundColor: globalTheme.colorError,
-  defaultFontColor: "#252323",
+  defaultFontColor: globalTheme.textDefaultColor,
   primaryFontColor: "#fff",
   errorFontColor: "#fff",
   disabledBorderColor: '#ddd',
@@ -17,7 +17,7 @@ export default {
   paddingMd: "6px 15px",
   paddingLg: "8px 18px",
   fontSizeSm: "12px",
-  fontSizeMd: "14px",
+  fontSizeMd: globalTheme.textDefaultFontSize,
   fontSizeLg: "16px",
   borderRadius: '2px'
 };
