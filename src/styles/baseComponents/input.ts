@@ -12,9 +12,9 @@ export default {
   paddingMd: "6px 4px",
   paddingLg: "8px 6px",
   fontSizeSm: "12px",
-  fontSizeMd: "14px",
+  fontSizeMd: globalTheme.textDefaultFontSize,
   fontSizeLg: "16px",
   borderRadius: '2px',
   backgroundColor: '#fff',
-  color: '#4f4f4f'
+  color: globalTheme.textDefaultColor
 };
