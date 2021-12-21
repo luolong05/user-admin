@@ -1,6 +1,6 @@
 import React, {useMemo, useState} from "react";
 import Button from "@commonUI/button";
-import Input from "@commonUI/input";
+import FormItemForInput from "@commonUI/formItemForInput";
 import { formItemRules } from "@/config/tsDataTypes/form"
 
 interface formRules {
@@ -38,9 +38,15 @@ const UserForm: React.FC = () => {
 
   return (
     <>
-      <Input value={userName} maxLength={userFormRules.userName.maxLength} onChange={handleUserNameChange} />
-      <Button onClick={handleBtnClick} disabled={isBtnDisable}>
-        button
+      <FormItemForInput
+        value={userName}
+        name='userName'
+        maxLength={userFormRules.userName.maxLength}
+        labelText='user name:'
+        onChange={handleUserNameChange}
+      />
+      <Button type='primary' onClick={handleBtnClick} disabled={isBtnDisable}>
+        Commit
       </Button>
     </>
   );
