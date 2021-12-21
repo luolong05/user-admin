@@ -4,4 +4,6 @@ export default {
   colorWarning: "#FF9A2A",
   colorSuccess: "#7FBC39",
   colorError: "#F56C6C",
+  textDefaultColor: '#252323',
+  textDefaultFontSize: '14px',
 };
