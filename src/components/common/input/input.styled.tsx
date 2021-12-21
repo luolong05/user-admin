@@ -4,6 +4,7 @@ import stylesConf from "@styles/input"
 export default styled.input`
   border: 1px solid ${stylesConf.defaultBorderColor};
   padding: ${stylesConf.paddingMd};
+  width: 100%;
   background-color: ${stylesConf.backgroundColor};
   color: ${stylesConf.color};
   &:focus {
