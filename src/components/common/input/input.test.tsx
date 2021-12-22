@@ -7,22 +7,16 @@ describe('Check the classname of the input by type/size/status', () => {
     console.log("event.value: ", evt.target.value)
   };
 
-  it('render input by type', () => {
-    const { container } = render(<Input type='success' onChange={onInputChange} />);
+  it('The input should be disabled when passing the disabled attribute', () => {
+    const { container } = render(<Input disabled value='' onChange={onInputChange}  />);
 
-    expect(container.firstChild).toHaveClass('input-success');
+    expect(container.firstChild).toBeDisabled();
   });
 
-  it('render input by size', () => {
-    const { container } = render(<Input size='lg' onChange={onInputChange} />);
+  it('The input should be enabled when the disabled attribute is not passed to the button', () => {
+    const { container } = render(<Input value='' onChange={onInputChange}  />);
 
-    expect(container.firstChild).toHaveClass('input-lg');
-  });
-
-  it('render input by status', () => {
-    const { container } = render(<Input disabled onChange={onInputChange}  />);
-
-    expect(container.firstChild).toHaveAttribute("disabled");
+    expect(container.firstChild).toBeEnabled();
   });
 });
 

@@ -1,30 +1,27 @@
 import React from "react";
-import InputStyled from "./input.styled";
+import InputStyled, { InputSizes, InputTypes } from "./input.styled";
 
 export interface InputProps {
-  value?: string;
+  value: string;
   name?: string;
   htmlType?: string;
-  type?: string;
-  size?: string;
+  type?: keyof InputTypes;
+  size?: keyof InputSizes;
   disabled?: boolean | undefined;
-  className?: string | undefined;
   maxLength?: number | undefined;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: React.FC<InputProps> = ({ size, className, type, htmlType, ...props }) => {
-  const getClassNames: () => string[] = () => {
-    return [
-      className || '',
-      `input-${type || "default"}`,
-      `input-${size || "md"}`,
-    ].filter(item => !!item);
+const Input: React.FC<InputProps> = ({ size, type, htmlType, ...props }) => {
+  const inputStyledProps = {
+    ...props,
+    id: props.name,
+    inputSize: size || 'md',
+    inputType: type || 'default',
+    type: htmlType,
   };
 
-  const classNames: string[] = getClassNames();
-
-  return <InputStyled id={props.name} {...props} type={htmlType} className={classNames.join(' ')} />
+  return <InputStyled {...inputStyledProps} />
 }
 
 export default Input;

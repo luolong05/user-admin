@@ -1,49 +1,66 @@
 import styled from "styled-components";
-import stylesConf from "@styles/input"
+import globalTheme from "@/styles/global/theme";
 
-export default styled.input`
-  border: 1px solid ${stylesConf.defaultBorderColor};
-  padding: ${stylesConf.paddingMd};
+export interface InputSizes {
+  sm: string;
+  md: string;
+  lg: string;
+}
+
+export interface InputTypes {
+  default: string;
+  error: string;
+  success: string;
+}
+
+export interface InputStyledCustomProps {
+  inputType: keyof InputTypes;
+  inputSize: keyof InputSizes;
+}
+
+const inputPadding: InputSizes = {
+  sm: '4px 2px',
+  md: '6px 4px',
+  lg: '8px 6px'
+};
+const inputFontSize: InputSizes = {
+  sm: '12px',
+  md: globalTheme.textDefaultFontSize,
+  lg: '16px',
+};
+const inputBorderColor: InputTypes = {
+  default: globalTheme.colorDefault,
+  error: globalTheme.colorError,
+  success: globalTheme.colorSuccess,
+};
+const inputFocusBorderColor: InputTypes = {
+  default: globalTheme.colorPrimary,
+  error: globalTheme.colorError,
+  success: globalTheme.colorSuccess,
+};
+
+const inputDisabledStyle = `
+  border-color: #ddd;
+  background-color: #e8e8e8;
+  color: #bdbdbd;
+  cursor: not-allowed;
+`;
+
+export default styled.input<InputStyledCustomProps>`
+  border: 1px solid ${props => inputBorderColor[props.inputType]};
+  padding: ${props => inputPadding[props.inputSize]};
   width: 100%;
-  background-color: ${stylesConf.backgroundColor};
-  color: ${stylesConf.color};
+  background-color: #fff;
+  color: ${props => props.theme.textDefaultColor};
+  font-size: ${props => inputFontSize[props.inputSize]};
   border-radius: 2px;
   &:focus {
-    border-color: ${stylesConf.activeBorderColor};
-  }
-  &.input-error {
-    border-color: ${stylesConf.errorBorderColor};
-    &:focus {
-      border-color: ${stylesConf.errorBorderColor};
-    }
-  }
-  &.input-success {
-    border-color: ${stylesConf.successBorderColor};
-    &:focus {
-      border-color: ${stylesConf.successBorderColor};
-    }
-  }
-  &.input-sm {
-    padding: ${stylesConf.paddingSm};
-    font-size: ${stylesConf.fontSizeSm};
-  }
-  &.input-md {
-    padding: ${stylesConf.paddingMd};
-    font-size: ${stylesConf.fontSizeMd};
-  }
-  &.input-lg {
-    padding: ${stylesConf.paddingLg};
-    font-size: ${stylesConf.fontSizeLg};
+    border-color: ${props => inputFocusBorderColor[props.inputType]};
   }
   &[disabled] {
-    border-color: ${stylesConf.disabledBorderColor};
-    background-color: ${stylesConf.disabledBackgroundColor};
-    color: ${stylesConf.disableFontColor};
-    cursor: not-allowed;
+    ${inputDisabledStyle}
     &:focus {
-      border-color: ${stylesConf.disabledBorderColor};
-      background-color: ${stylesConf.disabledBackgroundColor};
-      color: ${stylesConf.disableFontColor};
+      ${inputDisabledStyle}
     }
   }
 `
