@@ -3,7 +3,7 @@ import ButtonStyled from "./button.styled";
 
 type btnTypes = "default" | "error" | "warning" | "primary";
 type btnSizes = "sm" | "md" | "lg";
-interface buttonProps {
+interface ButtonProps {
   type?: btnTypes;
   size?: btnSizes;
   htmlType?: "button" | "submit" | "reset" | undefined;
@@ -12,7 +12,7 @@ interface buttonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-const Button: React.FC<buttonProps> = ({ htmlType, className, children, ...props }) => {
+const Button: React.FC<ButtonProps> = ({ htmlType, className, children, ...props }) => {
   const getClassNames: () => string[] = () => {
     return [
       className || '',

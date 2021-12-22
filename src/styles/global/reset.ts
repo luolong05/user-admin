@@ -37,6 +37,10 @@ input, button, select, textarea {
   border: none;
 }
 
+input[type="radio" i] {
+  margin: 0;
+}
+
 input:focus, textarea:focus {
   border-color: #fff;
   outline: none !important;

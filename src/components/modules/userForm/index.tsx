@@ -5,11 +5,11 @@ import FormItem from "@commonUI/formItem";
 import { formItemRules } from "@/config/tsDataTypes/form";
 import { UserFormWrapStyled, UserFormStyled, UserFormResultStyled } from "./userForm.styled"
 
-interface formRules {
+interface FormRules {
   userName: formItemRules;
 }
 
-const userFormRules: formRules = {
+const userFormRules: FormRules = {
   userName: {
     maxLength: 20
   }

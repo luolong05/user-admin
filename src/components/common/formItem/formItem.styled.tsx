@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
-export interface formItemWrapStyledProps {
+export interface FormItemWrapStyledProps {
   flexDirection?: 'row' | 'column';
 }
 
-export interface formItemLabelWrapStyledProps extends formItemWrapStyledProps {
+export interface FormItemLabelWrapStyledProps extends FormItemWrapStyledProps {
   labelWidth?: string;
   labelTextAlign?: string;
   labelFontSize?: string;
   labelFontColor?: string;
 }
 
-export const FormItemWrapStyled = styled.div<formItemWrapStyledProps>`
+export const FormItemWrapStyled = styled.div<FormItemWrapStyledProps>`
   display: flex;
   flex-direction: ${props => props.flexDirection || 'row'};
   margin-bottom: 20px;
@@ -20,7 +20,7 @@ export const FormItemWrapStyled = styled.div<formItemWrapStyledProps>`
   }
 `;
 
-export const FormItemLabelWrapStyled = styled.div<formItemLabelWrapStyledProps>`
+export const FormItemLabelWrapStyled = styled.div<FormItemLabelWrapStyledProps>`
   display: flex;
   align-items: center;
   justify-content: ${props => { const align: string = props.labelTextAlign || 'right'; return align === 'left' ? 'flex-start' : 'flex-end' }};

@@ -1,7 +1,7 @@
 import React from "react";
 import InputStyled from "./input.styled";
 
-export interface inputProps {
+export interface InputProps {
   value?: string;
   name?: string;
   htmlType?: string;
@@ -13,7 +13,7 @@ export interface inputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: React.FC<inputProps> = ({ size, className, type, htmlType, ...props }) => {
+const Input: React.FC<InputProps> = ({ size, className, type, htmlType, ...props }) => {
   const getClassNames: () => string[] = () => {
     return [
       className || '',
