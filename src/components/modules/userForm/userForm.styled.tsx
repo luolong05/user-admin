@@ -6,7 +6,6 @@ export const UserFormWrapStyled = styled.div`
   align-items: center;
   @media (min-width: 768px) {
     margin-top: 100px;
-    width: 100vw;
     height: 100vh;
   }
   @media (max-width: 768px) {
