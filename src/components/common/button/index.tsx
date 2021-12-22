@@ -1,8 +1,8 @@
 import React from "react";
-import ButtonStyled from "./button.styled";
+import ButtonStyled, { ButtonSizes, ButtonTypes } from "./button.styled";
 
-type btnTypes = "default" | "error" | "warning" | "primary";
-type btnSizes = "sm" | "md" | "lg";
+type btnTypes = keyof ButtonTypes;
+type btnSizes = keyof ButtonSizes;
 interface ButtonProps {
   type?: btnTypes;
   size?: btnSizes;
@@ -12,23 +12,16 @@ interface ButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ htmlType, className, children, ...props }) => {
-  const getClassNames: () => string[] = () => {
-    return [
-      className || '',
-      `btn-${props.type || "default"}`,
-      `btn-${props.size || "md"}`,
-    ].filter(item => !!item);
-  };
-
-  const classNames: string[] = getClassNames();
+const Button: React.FC<ButtonProps> = ({ htmlType, children, ...props }) => {
   const buttonStyledProps = {
-    disabled: props.disabled,
-    onClick: props.onClick,
+    ...props,
+    size: props.size || 'md',
+    btnType: props.type || 'default',
+    type: htmlType
   };
 
   return (
-    <ButtonStyled {...buttonStyledProps} type={htmlType} className={classNames.join(" ")}>
+    <ButtonStyled {...buttonStyledProps} type={htmlType}>
       {children}
     </ButtonStyled>
   );
