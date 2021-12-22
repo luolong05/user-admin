@@ -3,22 +3,16 @@ import {fireEvent, render} from "@testing-library/react";
 import Button from "./index";
 
 describe('check the classname of the button by type/size/status', () => {
-  it('render button by type', () => {
-    const { container } = render(<Button type='primary' />);
-
-    expect(container.firstChild).toHaveClass('btn-primary');
-  });
-
-  it('render button by size', () => {
-    const { container } = render(<Button size='lg' />);
-
-    expect(container.firstChild).toHaveClass('btn-lg');
-  });
-
-  it('render button by status', () => {
+  it('The button should be disabled when passing the disabled attribute', () => {
     const { container } = render(<Button disabled />);
 
-    expect(container.firstChild).toHaveAttribute("disabled");
+    expect(container.firstChild).toBeDisabled();
+  });
+
+  it('The button should be enabled when the disabled attribute is not passed to the button', () => {
+    const { container } = render(<Button />);
+
+    expect(container.firstChild).toBeEnabled();
   });
 });
 
