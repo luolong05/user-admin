@@ -23,4 +23,5 @@ export const UserFormResultStyled = styled.div`
   margin-bottom: 20px;
   font-size: 16px;
   color: ${props => props.theme.defaultFontColor};
+  text-align: center;
 `;
