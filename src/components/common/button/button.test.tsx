@@ -18,7 +18,7 @@ describe('check the classname of the button by type/size/status', () => {
 });
 
 describe('check the click function of the button', () => {
-  it('trigger click event', (done) => {
+  it('trigger click event', () => {
     const handleBtnClick = jest.fn(() => {});
     const { getByText } = render(<Button type='primary' onClick={handleBtnClick}>Commit</Button>);
     const commitBtn = getByText('Commit');
@@ -26,7 +26,5 @@ describe('check the click function of the button', () => {
     userEvent.click(commitBtn);
 
     expect(handleBtnClick).toHaveBeenCalled();
-
-    done();
   });
 });
