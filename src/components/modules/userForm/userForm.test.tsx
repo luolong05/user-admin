@@ -1,6 +1,7 @@
 import React from "react";
-import {render, queryByAttribute, fireEvent, screen} from "@testing-library/react";
+import {render, queryByAttribute} from "@testing-library/react";
 import UserForm from "./index";
+import userEvent from "@testing-library/user-event";
 
 describe("Test the form element of the userForm component", () => {
   it('userForm must have a userName input', () => {
@@ -32,7 +33,7 @@ describe("Test the form function", () => {
     const commitBtn = getByText('Commit');
 
     if (userNameInput) {
-      fireEvent.input(userNameInput, { target: { value: '12345678901234567890123' } });
+      userEvent.type(userNameInput, '12345678901234567890123')
     }
 
     expect(commitBtn).toBeEnabled();
@@ -43,7 +44,7 @@ describe("Test the form function", () => {
     const userNameInput = queryByAttribute("name", container, "userName");
 
     if (userNameInput) {
-      fireEvent.input(userNameInput, { target: { value: '12345678901234567890123' } });
+      userEvent.type(userNameInput, '12345678901234567890123')
     }
 
     expect(userNameInput?.getAttribute("value")).toEqual('12345678901234567890');
@@ -55,10 +56,10 @@ describe("Test the form function", () => {
     const commitBtn = getByText('Commit');
 
     if (userNameInput) {
-      fireEvent.input(userNameInput, { target: { value: '12345678901234567890123' } });
+      userEvent.type(userNameInput, '12345678901234567890123')
     }
 
-    fireEvent.click(commitBtn);
+    userEvent.click(commitBtn);
     expect(getByText('The information you entered is: 12345678901234567890')).toBeInTheDocument();
   });
 });
