@@ -3,19 +3,11 @@ import styleConfig from "@/config/styles";
 
 const mobileScreenMaxWidth = styleConfig.mobileScreenMaxWidth;
 export const UserFormWrapStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  @media (min-width: ${mobileScreenMaxWidth}px) {
-    margin-top: 100px;
-    height: 100vh;
-  }
-  @media (max-width: ${mobileScreenMaxWidth}px) {
-    margin: 50px 12px 0;
-  }
+  padding: 150px 12px 0;
 `;
 
 export const UserFormStyled = styled.form`
+  margin: 0 auto;
   width: 400px;
   @media (max-width: ${mobileScreenMaxWidth}px) {
     width: 100%;
