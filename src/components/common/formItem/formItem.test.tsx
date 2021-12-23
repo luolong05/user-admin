@@ -11,7 +11,7 @@ describe('Check if the label is rendered', () => {
         filedName='testFormItemName'
         labelText='testLabel'
       >
-        <Input name='testFormItemName' onChange={onInputValueChange} />
+        <Input name='testFormItemName' value='' onChange={onInputValueChange} />
       </FormItem>
     );
 
