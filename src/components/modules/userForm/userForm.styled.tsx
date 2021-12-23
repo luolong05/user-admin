@@ -16,13 +16,14 @@ export const UserFormWrapStyled = styled.div`
 `;
 
 export const UserFormStyled = styled.form`
-  border: 1px solid ${props => props.theme.colorDefault};
-  padding: 30px;
   width: 400px;
-  border-radius: 4px;
   @media (max-width: ${mobileScreenMaxWidth}px) {
     width: 100%;
   }
+`;
+
+export const UserFormBtnWrapStyled = styled.div`
+  text-align: center;
 `;
 
 export const UserFormResultStyled = styled.div`

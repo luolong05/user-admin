@@ -3,7 +3,7 @@ import Button from "@commonUI/button";
 import Input from "@commonUI/input";
 import FormItem, { FormItemFlexDirection } from "@commonUI/formItem";
 import { formItemRules } from "@/config/tsDataTypes/form";
-import { UserFormWrapStyled, UserFormStyled, UserFormResultStyled } from "./userForm.styled";
+import { UserFormWrapStyled, UserFormStyled, UserFormResultStyled, UserFormBtnWrapStyled } from "./userForm.styled";
 import styleConfig from "@/config/styles";
 
 interface FormRules {
@@ -64,10 +64,7 @@ const UserForm: React.FC = () => {
             onChange={handleUserNameChange}
           />
         </FormItem>
-        <FormItem
-          filedName='userFormCommitButton'
-          labelWidth={labelWidth}
-        >
+        <UserFormBtnWrapStyled>
           <Button
             type='primary'
             htmlType='button'
@@ -76,7 +73,7 @@ const UserForm: React.FC = () => {
           >
             Commit
           </Button>
-        </FormItem>
+        </UserFormBtnWrapStyled>
       </UserFormStyled>
       {
         showInputResult &&
