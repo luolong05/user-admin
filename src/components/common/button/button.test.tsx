@@ -1,6 +1,7 @@
 import React from "react";
-import {fireEvent, render} from "@testing-library/react";
+import {render} from "@testing-library/react";
 import Button from "./index";
+import userEvent from "@testing-library/user-event";
 
 describe('check the classname of the button by type/size/status', () => {
   it('The button should be disabled when passing the disabled attribute', () => {
@@ -19,9 +20,10 @@ describe('check the classname of the button by type/size/status', () => {
 describe('check the click function of the button', () => {
   it('trigger click event', (done) => {
     const handleBtnClick = jest.fn(() => {});
-    const { container } = render(<Button type='primary' onClick={handleBtnClick} />);
+    const { getByText } = render(<Button type='primary' onClick={handleBtnClick}>Commit</Button>);
+    const commitBtn = getByText('Commit');
 
-    fireEvent.click(container.childNodes[0]);
+    userEvent.click(commitBtn);
 
     expect(handleBtnClick).toHaveBeenCalled();
 
