@@ -2,7 +2,7 @@ import React from "react";
 import InputStyled, { InputSizes, InputTypes } from "./input.styled";
 
 export interface InputProps {
-  value: string;
+  value?: string;
   name?: string;
   htmlType?: string;
   type?: keyof InputTypes;

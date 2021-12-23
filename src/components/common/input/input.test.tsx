@@ -1,6 +1,7 @@
 import React from "react";
-import {fireEvent, render} from "@testing-library/react";
+import {render} from "@testing-library/react";
 import Input from "./index";
+import userEvent from "@testing-library/user-event";
 
 describe('Check the classname of the input by type/size/status', () => {
   const onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (evt) => {
@@ -21,17 +22,16 @@ describe('Check the classname of the input by type/size/status', () => {
 });
 
 describe('The input should return a correct value', () => {
-  it('trigger change event', (done) => {
-    let inputValue = "";
+  it('trigger change event', () => {
+    let inputValue = '';
     const handleInputValueChange:  (e: React.ChangeEvent<HTMLInputElement>) => void = evt => {
       inputValue = evt.target.value;
     };
-    const { container } = render(<Input value={inputValue} onChange={handleInputValueChange} />);
+    const { getByRole } = render(<Input onChange={handleInputValueChange} />);
+    const input = getByRole('textbox');
 
-    fireEvent.input(container.childNodes[0], { target: { value: 'hello' }});
+    userEvent.type(input, 'hello');
 
     expect(inputValue).toEqual('hello');
-
-    done();
   });
 });
