@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import globalTheme from "@/styles/global/theme";
+import baseComponentsTheme from "@/styles/baseComponents/theme";
 
 export interface ButtonSizes {
   sm: string;
@@ -18,35 +19,35 @@ export interface ButtonStyledCustomProps {
 }
 
 const buttonPadding: ButtonSizes = {
-  sm: '4px 10px',
-  md: '6px 15px',
-  lg: '8px 18px'
+  sm: baseComponentsTheme.buttonPaddingSm,
+  md: baseComponentsTheme.buttonPaddingMd,
+  lg: baseComponentsTheme.buttonPaddingLg,
 };
 const buttonFontSize: ButtonSizes = {
-  sm: '12px',
-  md: globalTheme.textDefaultFontSize,
-  lg: '16px',
+  sm: baseComponentsTheme.fontSizeSm,
+  md: baseComponentsTheme.fontSizeMd,
+  lg: baseComponentsTheme.fontSizeLg,
 };
 const buttonBorderColor: ButtonTypes = {
   default: globalTheme.colorDefault,
   primary: globalTheme.colorPrimary,
 };
 const buttonBackgroundColor: ButtonTypes = {
-  default: 'rgba(255,255,255,0.74)',
+  default: globalTheme.colorDefault,
   primary: globalTheme.colorPrimary,
 };
 const buttonHoverBackgroundColor: ButtonTypes = {
-  default: '#fff',
-  primary: '#3284e1',
+  default:  globalTheme.colorDefaultActive,
+  primary: globalTheme.colorPrimaryActive,
 };
 const buttonFontColor: ButtonTypes = {
   default: globalTheme.textDefaultColor,
-  primary: '#fff',
+  primary: globalTheme.colorDefaultActive,
 };
 const buttonDisabledStyle = `
-  border-color: #ddd;
-  background-color: #e8e8e8;
-  color: #bdbdbd;
+  border-color: ${baseComponentsTheme.formFieldBorderColorDisabled};
+  background-color: ${baseComponentsTheme.formFieldBgColorDisabled};
+  color: ${baseComponentsTheme.formFieldFontColorDisabled};
   cursor: not-allowed;
 `;
 
