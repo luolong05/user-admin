@@ -8,7 +8,6 @@ interface ButtonProps {
   size?: btnSizes;
   htmlType?: "button" | "submit" | "reset" | undefined;
   disabled?: boolean | undefined;
-  className?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
