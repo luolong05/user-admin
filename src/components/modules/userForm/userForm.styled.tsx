@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import styleConfig from "@/config/styles";
+import styleConfig from "@/config/layout";
 
 const mobileScreenMaxWidth = styleConfig.mobileScreenMaxWidth;
 export const UserFormWrapStyled = styled.div`

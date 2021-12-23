@@ -4,7 +4,7 @@ import Input from "@commonUI/input";
 import FormItem, { FormItemFlexDirection } from "@commonUI/formItem";
 import { formItemRules } from "@/config/tsDataTypes/form";
 import { UserFormWrapStyled, UserFormStyled, UserFormResultStyled, UserFormBtnWrapStyled } from "./userForm.styled";
-import styleConfig from "@/config/styles";
+import styleConfig from "@/config/layout";
 
 interface FormRules {
   userName: formItemRules;
