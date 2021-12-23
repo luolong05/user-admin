@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import globalTheme from "@/styles/global/theme";
+import baseComponentsTheme from "@/styles/baseComponents/theme";
 
 export interface InputSizes {
   sm: string;
@@ -19,14 +20,14 @@ export interface InputStyledCustomProps {
 }
 
 const inputPadding: InputSizes = {
-  sm: '4px 2px',
-  md: '6px 4px',
-  lg: '8px 6px'
+  sm: baseComponentsTheme.inputPaddingSm,
+  md: baseComponentsTheme.inputPaddingMd,
+  lg: baseComponentsTheme.inputPaddingLg,
 };
 const inputFontSize: InputSizes = {
-  sm: '12px',
-  md: globalTheme.textDefaultFontSize,
-  lg: '16px',
+  sm: baseComponentsTheme.fontSizeSm,
+  md: baseComponentsTheme.fontSizeMd,
+  lg: baseComponentsTheme.fontSizeLg,
 };
 const inputBorderColor: InputTypes = {
   default: globalTheme.colorDefault,
@@ -40,9 +41,9 @@ const inputFocusBorderColor: InputTypes = {
 };
 
 const inputDisabledStyle = `
-  border-color: #ddd;
-  background-color: #e8e8e8;
-  color: #bdbdbd;
+  border-color: ${baseComponentsTheme.formFieldBorderColorDisabled};
+  background-color: ${baseComponentsTheme.formFieldBgColorDisabled};
+  color: ${baseComponentsTheme.formFieldFontColorDisabled};
   cursor: not-allowed;
 `;
 
@@ -50,7 +51,7 @@ export default styled.input<InputStyledCustomProps>`
   border: 1px solid ${props => inputBorderColor[props.inputType]};
   padding: ${props => inputPadding[props.inputSize]};
   width: 100%;
-  background-color: #fff;
+  background-color: ${props => props.theme.backgroundDefaultColor};
   color: ${props => props.theme.textDefaultColor};
   font-size: ${props => inputFontSize[props.inputSize]};
   border-radius: 2px;
