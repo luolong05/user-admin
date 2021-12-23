@@ -1,14 +1,16 @@
 import styled from "styled-components";
+import styleConfig from "@/config/styles";
 
+const mobileScreenMaxWidth = styleConfig.mobileScreenMaxWidth;
 export const UserFormWrapStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media (min-width: 768px) {
+  @media (min-width: ${mobileScreenMaxWidth}px) {
     margin-top: 100px;
     height: 100vh;
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${mobileScreenMaxWidth}px) {
     margin: 50px 12px 0;
   }
 `;
@@ -18,7 +20,7 @@ export const UserFormStyled = styled.form`
   padding: 30px;
   width: 400px;
   border-radius: 4px;
-  @media (max-width: 768px) {
+  @media (max-width: ${mobileScreenMaxWidth}px) {
     width: 100%;
   }
 `;

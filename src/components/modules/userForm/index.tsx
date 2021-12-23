@@ -1,9 +1,10 @@
 import React, {useMemo, useState} from "react";
 import Button from "@commonUI/button";
 import Input from "@commonUI/input";
-import FormItem from "@commonUI/formItem";
+import FormItem, { FormItemFlexDirection } from "@commonUI/formItem";
 import { formItemRules } from "@/config/tsDataTypes/form";
-import { UserFormWrapStyled, UserFormStyled, UserFormResultStyled } from "./userForm.styled"
+import { UserFormWrapStyled, UserFormStyled, UserFormResultStyled } from "./userForm.styled";
+import styleConfig from "@/config/styles";
 
 interface FormRules {
   userName: formItemRules;
@@ -14,6 +15,11 @@ const userFormRules: FormRules = {
     maxLength: 20
   }
 };
+const
+  isMobileScreen: boolean = screen.width <= styleConfig.mobileScreenMaxWidth,
+  formItemFlexDirection: FormItemFlexDirection = isMobileScreen ? 'column' : 'row',
+  labelWidth: string = isMobileScreen ? '100%' : '80px',
+  labelTextAlign: string = isMobileScreen ? 'left' : 'right';
 
 const UserForm: React.FC = () => {
   const [ userName, setUserName ] = useState("");
@@ -45,9 +51,11 @@ const UserForm: React.FC = () => {
     <UserFormWrapStyled>
       <UserFormStyled>
         <FormItem
+          flexDirection={formItemFlexDirection}
           filedName='userName'
           labelText='user name:'
-          labelWidth='80px'
+          labelWidth={labelWidth}
+          labelTextAlign={labelTextAlign}
         >
           <Input
             value={userName}
@@ -58,7 +66,7 @@ const UserForm: React.FC = () => {
         </FormItem>
         <FormItem
           filedName='userFormCommitButton'
-          labelWidth='80px'
+          labelWidth={labelWidth}
         >
           <Button
             type='primary'
