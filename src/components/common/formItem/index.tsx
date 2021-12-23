@@ -1,8 +1,9 @@
 import React from "react";
 import { FormItemWrapStyled, FormItemLabelWrapStyled, FormItemFieldWrapStyled, FormItemWrapStyledProps, FormItemLabelWrapStyledProps } from './formItem.styled';
 
+export type FormItemFlexDirection = 'row' | 'column';
 export interface FormItemProps {
-  flexDirection?: 'row' | 'column';
+  flexDirection?: FormItemFlexDirection;
   labelText?: string;
   labelWidth?: string;
   labelTextAlign?: string;
@@ -10,7 +11,6 @@ export interface FormItemProps {
   labelFontColor?: string;
   filedName: string;
 }
-
 
 const FormItem: React.FC<FormItemProps> = ({children, ...props}) => {
   const formItemProps: FormItemWrapStyledProps = {
