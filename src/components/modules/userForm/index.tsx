@@ -1,10 +1,18 @@
 import React, {useMemo, useState} from "react";
 import Button from "@commonUI/button";
 import Input from "@commonUI/input";
+import Radio from "@commonUI/radio";
+import RadioGroup from "@commonUI/radio/radioGroup";
 import FormItem, { FormItemFlexDirection } from "@commonUI/formItem";
 import { formItemRules } from "@/config/tsDataTypes/form";
 import { UserFormWrapStyled, UserFormStyled, UserFormResultStyled, UserFormBtnWrapStyled } from "./userForm.styled";
 import styleConfig from "@/config/layout";
+import { getListLabelByValue } from "@/utils/ts";
+
+interface UserActive {
+  value: number;
+  label: string;
+}
 
 interface FormRules {
   userName: formItemRules;
@@ -15,6 +23,10 @@ const userFormRules: FormRules = {
     maxLength: 20
   }
 };
+const userActiveList: UserActive[] = [
+  { value: 1, label: 'Yes' },
+  { value: 0, label: 'No' },
+];
 const
   isMobileScreen: boolean = screen.width <= styleConfig.mobileScreenMaxWidth,
   formItemFlexDirection: FormItemFlexDirection = isMobileScreen ? 'column' : 'row',
@@ -23,6 +35,7 @@ const
 
 const UserForm: React.FC = () => {
   const [ userName, setUserName ] = useState("");
+  const [ userActive, setUserActive ] = useState(1);
   const [ showInputResult, setShowInputResult ] = useState(false);
   const isBtnDisable: boolean = useMemo(() => {
     return !userName;
@@ -53,7 +66,7 @@ const UserForm: React.FC = () => {
         <FormItem
           flexDirection={formItemFlexDirection}
           filedName='userName'
-          labelText='user name:'
+          labelText='name:'
           labelWidth={labelWidth}
           labelTextAlign={labelTextAlign}
         >
@@ -63,6 +76,23 @@ const UserForm: React.FC = () => {
             maxLength={userFormRules.userName.maxLength}
             onChange={handleUserNameChange}
           />
+        </FormItem>
+        <FormItem
+          flexDirection={formItemFlexDirection}
+          filedName='userActive'
+          labelText='active:'
+          labelWidth={labelWidth}
+          labelTextAlign={labelTextAlign}
+        >
+          <RadioGroup
+            name='userActive'
+            value={userActive}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserActive(+e.target.value)}
+          >
+            {
+              userActiveList.map((active: UserActive) => <Radio key={active.value} value={active.value}>{active.label}</Radio>)
+            }
+          </RadioGroup>
         </FormItem>
         <UserFormBtnWrapStyled>
           <Button
@@ -77,7 +107,7 @@ const UserForm: React.FC = () => {
       </UserFormStyled>
       {
         showInputResult &&
-        <UserFormResultStyled>The information you entered is: {userName}</UserFormResultStyled>
+        <UserFormResultStyled>The information you entered is: Name: {userName}, Active: {getListLabelByValue(userActiveList, userActive)}</UserFormResultStyled>
       }
     </UserFormWrapStyled>
   );
