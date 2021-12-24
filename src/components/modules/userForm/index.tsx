@@ -1,8 +1,7 @@
 import React, {useMemo, useState} from "react";
 import Button from "@commonUI/button";
 import Input from "@commonUI/input";
-import Radio from "@commonUI/radio";
-import RadioGroup from "@commonUI/radio/radioGroup";
+import { Radio, RadioGroup } from "@commonUI/radio";
 import FormItem, { FormItemFlexDirection } from "@commonUI/formItem";
 import { formItemRules } from "@/config/tsDataTypes/form";
 import { UserFormWrapStyled, UserFormStyled, UserFormResultStyled, UserFormBtnWrapStyled } from "./userForm.styled";
