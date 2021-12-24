@@ -13,6 +13,7 @@ html, body {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  margin: 0;
   outline: none;
   box-shadow: none;
 }
@@ -35,10 +36,6 @@ img {
 input, button, select, textarea {
   outline: none;
   border: none;
-}
-
-input[type="radio" i] {
-  margin: 0;
 }
 
 input:focus, textarea:focus {
