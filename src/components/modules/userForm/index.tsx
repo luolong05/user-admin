@@ -73,6 +73,7 @@ const UserForm: React.FC = () => {
             value={userName}
             name='userName'
             maxLength={userFormRules.userName.maxLength}
+            placeholder='Please input'
             onChange={handleUserNameChange}
           />
         </FormItem>
