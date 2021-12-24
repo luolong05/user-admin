@@ -8,6 +8,8 @@ export default {
   inputPaddingSm: '4px 2px',
   inputPaddingMd: '6px 4px',
   inputPaddingLg: '8px 6px',
+  inputRadioGap: '20px',
+  inputRadioTextGap: '5px',
   formFieldBorderColorDisabled: '#ddd',
   formFieldBgColorDisabled: '#e8e8e8',
   formFieldFontColorDisabled: '#bdbdbd',
