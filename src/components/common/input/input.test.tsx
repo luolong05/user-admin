@@ -3,7 +3,7 @@ import {render} from "@testing-library/react";
 import Input from "./index";
 import userEvent from "@testing-library/user-event";
 
-describe('Check the classname of the input by type/size/status', () => {
+describe('Check the input status', () => {
   const onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (evt) => {
     console.log("event.value: ", evt.target.value)
   };
