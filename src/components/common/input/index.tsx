@@ -19,6 +19,7 @@ const Input: React.FC<InputProps> = ({ size, type, htmlType, ...props }) => {
     inputSize: size || 'md',
     inputType: type || 'default',
     type: htmlType,
+    autoComplete: 'off',
   };
 
   return <InputStyled {...inputStyledProps} />
