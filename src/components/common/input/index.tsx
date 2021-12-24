@@ -7,9 +7,9 @@ export interface InputProps {
   htmlType?: string;
   type?: keyof InputTypes;
   size?: keyof InputSizes;
-  disabled?: boolean | undefined;
   maxLength?: number | undefined;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  [propName: string]: any;
 }
 
 const Input: React.FC<InputProps> = ({ size, type, htmlType, ...props }) => {
