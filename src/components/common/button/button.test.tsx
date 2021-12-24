@@ -3,7 +3,7 @@ import {render} from "@testing-library/react";
 import Button from "./index";
 import userEvent from "@testing-library/user-event";
 
-describe('check the classname of the button by type/size/status', () => {
+describe('check the button status', () => {
   it('The button should be disabled when passing the disabled attribute', () => {
     const { container } = render(<Button disabled />);
 
