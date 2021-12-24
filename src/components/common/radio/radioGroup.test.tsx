@@ -1,6 +1,5 @@
 import React from "react";
-import Radio from "./index";
-import RadioGroup from "./radioGroup";
+import {Radio, RadioGroup} from "./index";
 import {render} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Radio from './index';
+import {Radio} from './index';
 import {render} from "@testing-library/react";
 
 describe('Check the radio dom information', () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import {RadioGroupWrapStyled} from "./radioGroup.styled";
-import { RadioValue } from "./index";
+import { RadioValue } from "./radio";
 
 interface RadioGroupProps {
   name: string;
