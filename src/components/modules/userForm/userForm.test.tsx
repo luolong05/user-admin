@@ -60,6 +60,6 @@ describe("Test the form function", () => {
     }
 
     userEvent.click(commitBtn);
-    expect(getByText('The information you entered is: 12345678901234567890')).toBeInTheDocument();
+    expect(getByText(/The information you entered is: Name: 12345678901234567890/g)).toBeInTheDocument();
   });
 });
