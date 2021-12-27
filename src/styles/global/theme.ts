@@ -9,4 +9,5 @@ export default {
   textDefaultColor: '#252323',
   textDefaultFontSize: '14px',
   backgroundDefaultColor: '#fff',
+  bgPrimaryActiveFontColor: '#fff',
 };
