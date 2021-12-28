@@ -8,7 +8,7 @@ export interface InputProps {
   type?: keyof InputTypes;
   size?: keyof InputSizes;
   maxLength?: number | undefined;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   [propName: string]: any;
 }
 
