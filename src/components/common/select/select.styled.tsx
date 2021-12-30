@@ -1,23 +1,10 @@
 import styled from "styled-components";
-import baseComponentsTheme from "@styles/theme";
 import {InputSizes, InputTypes} from "@commonUI/input/input.styled";
-import globalTheme from "@/styles/global/theme";
-
-export interface SelectTypes {
-  default: string;
-  error: string;
-  success: string;
-}
-
-export interface SelectSizes {
-  sm: string;
-  md: string;
-  lg: string;
-}
+import baseComponentsTheme from "@styles/theme";
 
 export interface SelectStyledCustomProps {
-  type: keyof SelectTypes;
-  size: keyof SelectSizes;
+  type: keyof InputTypes;
+  size: keyof InputSizes;
 }
 
 export const SelectWrapStyled = styled.div`
@@ -41,52 +28,71 @@ export const SelectWrapStyled = styled.div`
   }
 `;
 
-const SelectPadding: SelectSizes = {
-  sm: baseComponentsTheme.inputPaddingSm,
-  md: baseComponentsTheme.inputPaddingMd,
-  lg: baseComponentsTheme.inputPaddingLg,
-};
-
-const selectFontSize: SelectSizes = {
-  sm: baseComponentsTheme.fontSizeSm,
-  md: baseComponentsTheme.fontSizeMd,
-  lg: baseComponentsTheme.fontSizeLg,
-};
-
-const selectBorderColor: InputTypes = {
-  default: globalTheme.colorDefault,
-  error: globalTheme.colorError,
-  success: globalTheme.colorSuccess,
-};
-
-const selectFocusBorderColor: InputTypes = {
-  default: globalTheme.colorPrimary,
-  error: globalTheme.colorError,
-  success: globalTheme.colorSuccess,
-};
-
-export const SelectStyled = styled.div<SelectStyledCustomProps>`
-  padding: ${props => SelectPadding[props.size]};
-  font-size: ${props => selectFontSize[props.size]};
-`
-
-export const SelectArrowStyle = styled.span`
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  margin-top: -10px;
-  font-size: 16px;
-  color: ${props => props.theme.colorDefault};
-`;
-
 interface SelectDropdownCustomProps {
-  show: boolean
+  show: boolean,
+  size: keyof InputSizes;
 }
+
+const selectDropdownOffsetTop: InputSizes = {
+  sm: baseComponentsTheme.selectDropdownOffsetTopSm,
+  md: baseComponentsTheme.selectDropdownOffsetTopMd,
+  lg: baseComponentsTheme.selectDropdownOffsetTopLg,
+};
 
 export const SelectDropdownStyled = styled.ul<SelectDropdownCustomProps>`
   display: ${props => props.show ? 'block' : 'none'};
   position: absolute;
-  bottom: -5px;
+  top: ${props => selectDropdownOffsetTop[props.size]};
   width: 100%;
+  box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
   background-color: ${props => props.theme.backgroundDefaultColor};
+  z-index: 999;
 `;
+
+interface OptionStyledProps {
+  selected: boolean;
+  disabled?: boolean;
+}
+
+export const OptionStyled = styled.li<OptionStyledProps>`
+  margin: ${props => props.theme.selectOptionMargin};
+  padding: ${props => props.theme.selectOptionPadding};
+  background-color: ${props => {
+    if (props.disabled) {
+      return props.theme.formFieldBgColorDisabled;
+    }
+    
+    if (props.selected) {
+      return props.theme.selectOptionActiveBgColor;
+    }
+    
+    return props.theme.selectOptionBgColor;
+  }};
+  font-size: ${props => props.theme.textDefaultFontSize};
+  color: ${props => {
+    if (props.disabled) {
+      return props.theme.formFieldFontColorDisabled;
+    }
+    
+    if (props.selected) {
+      return props.theme.bgPrimaryActiveFontColor;
+    }
+    
+    return props.theme.textDefaultColor;
+  }};
+  cursor: pointer;
+  border-radius: ${props => props.theme.formFieldBorderRadius};
+  &:hover {
+    background-color: ${props => {
+      if (props.disabled) {
+        return props.theme.formFieldBgColorDisabled;
+      }
+
+      if (props.selected) {
+        return props.theme.selectOptionActiveBgColor;
+      }
+
+      return props.theme.backgroundDefaultColorActive;
+    }};
+  }
+`
