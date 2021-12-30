@@ -1,7 +1,7 @@
 import React, {useMemo, useState} from "react";
 import Button from "@commonUI/button";
 import Input from "@commonUI/input";
-import { Radio, RadioGroup } from "@commonUI/radio";
+import { RadioGroup } from "@commonUI/radio";
 import Select, { SelectValueType } from "@commonUI/select";
 import FormItem, { FormItemFlexDirection } from "@commonUI/formItem";
 import { formItemRules } from "@/config/tsDataTypes/form";
@@ -23,7 +23,6 @@ const userFormRules: FormRules = {
 const
   isMobileScreen: boolean = screen.width <= styleConfig.mobileScreenMaxWidth,
   formItemFlexDirection: FormItemFlexDirection = isMobileScreen ? 'column' : 'row',
-  labelWidth: string = isMobileScreen ? '100%' : '80px',
   labelTextAlign: string = isMobileScreen ? 'left' : 'right';
 
 const UserForm: React.FC = () => {
@@ -61,7 +60,6 @@ const UserForm: React.FC = () => {
         <FormItem
           flexDirection={formItemFlexDirection}
           labelText='Name:'
-          labelWidth={labelWidth}
           labelTextAlign={labelTextAlign}
         >
           <Input
@@ -75,7 +73,6 @@ const UserForm: React.FC = () => {
         <FormItem
           flexDirection={formItemFlexDirection}
           labelText='Active:'
-          labelWidth={labelWidth}
           labelTextAlign={labelTextAlign}
         >
           <RadioGroup
@@ -88,7 +85,6 @@ const UserForm: React.FC = () => {
         <FormItem
           flexDirection={formItemFlexDirection}
           labelText='Skills:'
-          labelWidth={labelWidth}
           labelTextAlign={labelTextAlign}
         >
           <Select
@@ -102,7 +98,6 @@ const UserForm: React.FC = () => {
         <FormItem
           flexDirection={formItemFlexDirection}
           labelText='Area:'
-          labelWidth={labelWidth}
           labelTextAlign={labelTextAlign}
         >
           <Select
