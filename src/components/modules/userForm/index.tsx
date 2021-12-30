@@ -82,7 +82,6 @@ const UserForm: React.FC = () => {
       <UserFormStyled>
         <FormItem
           flexDirection={formItemFlexDirection}
-          filedName='userName'
           labelText='Name:'
           labelWidth={labelWidth}
           labelTextAlign={labelTextAlign}
@@ -97,7 +96,6 @@ const UserForm: React.FC = () => {
         </FormItem>
         <FormItem
           flexDirection={formItemFlexDirection}
-          filedName='userActive'
           labelText='Active:'
           labelWidth={labelWidth}
           labelTextAlign={labelTextAlign}
@@ -114,7 +112,6 @@ const UserForm: React.FC = () => {
         </FormItem>
         <FormItem
           flexDirection={formItemFlexDirection}
-          filedName='userSkills'
           labelText='Skills:'
           labelWidth={labelWidth}
           labelTextAlign={labelTextAlign}
@@ -129,7 +126,6 @@ const UserForm: React.FC = () => {
         </FormItem>
         <FormItem
           flexDirection={formItemFlexDirection}
-          filedName='userArea'
           labelText='Area:'
           labelWidth={labelWidth}
           labelTextAlign={labelTextAlign}
