@@ -57,7 +57,7 @@ export default styled.button<ButtonStyledCustomProps>`
   background-color: ${props => buttonBackgroundColor[props.btnType]};
   color: ${props => buttonFontColor[props.btnType]};
   font-size: ${props => buttonFontSize[props.size]};
-  border-radius: 2px;
+  border-radius: ${baseComponentsTheme.formFieldBorderRadius};
   cursor: pointer;
   transition: background-color .2s;
   &:hover {
