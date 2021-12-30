@@ -113,7 +113,7 @@ const Index: React.FC<SelectProps> = ({value: selectValue, multiple, onChange, .
   }, [ showDropdown ]);
 
   return <ThemeProvider theme={baseComponentsTheme}>
-    <SelectWrapStyled ref={selectWrapRef}>
+    <SelectWrapStyled ref={selectWrapRef} onClick={(e) => { e.stopPropagation(); e.preventDefault(); }}>
       <Input
         readOnly
         size={props.size}
