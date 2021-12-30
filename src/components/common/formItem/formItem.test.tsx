@@ -8,7 +8,6 @@ describe('Check if the label is rendered', () => {
     const onInputValueChange: (e: React.ChangeEvent<HTMLInputElement>) => void = () => {};
     const { getByLabelText } = render(
       <FormItem
-        filedName='testFormItemName'
         labelText='testLabel'
       >
         <Input name='testFormItemName' value='' onChange={onInputValueChange} />

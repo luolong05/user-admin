@@ -1,5 +1,11 @@
 import React from "react";
-import { FormItemWrapStyled, FormItemLabelWrapStyled, FormItemFieldWrapStyled, FormItemWrapStyledProps, FormItemLabelWrapStyledProps } from './formItem.styled';
+import {
+  FormItemWrapStyled,
+  FormItemLabelStyled,
+  FormItemLabelTextStyled,
+  FormItemFieldWrapStyled,
+  FormItemLabelStyledProps
+} from './formItem.styled';
 
 export type FormItemFlexDirection = 'row' | 'column';
 export interface FormItemProps {
@@ -9,14 +15,10 @@ export interface FormItemProps {
   labelTextAlign?: string;
   labelFontSize?: string;
   labelFontColor?: string;
-  filedName: string;
 }
 
 const FormItem: React.FC<FormItemProps> = ({children, ...props}) => {
-  const formItemProps: FormItemWrapStyledProps = {
-    flexDirection: props.flexDirection || 'row',
-  };
-  const formItemLabelProps: FormItemLabelWrapStyledProps = {
+  const formItemLabelProps: FormItemLabelStyledProps = {
     flexDirection: props.flexDirection || 'row',
     labelWidth: props.labelWidth,
     labelTextAlign: props.labelTextAlign,
@@ -24,11 +26,11 @@ const FormItem: React.FC<FormItemProps> = ({children, ...props}) => {
     labelFontColor: props.labelFontColor,
   };
 
-  return <FormItemWrapStyled {...formItemProps}>
-    <FormItemLabelWrapStyled {...formItemLabelProps}>
-      <label htmlFor={props.filedName}>{props.labelText}</label>
-    </FormItemLabelWrapStyled>
-    <FormItemFieldWrapStyled>{children}</FormItemFieldWrapStyled>
+  return <FormItemWrapStyled>
+    <FormItemLabelStyled flexDirection={formItemLabelProps.flexDirection}>
+      <FormItemLabelTextStyled {...formItemLabelProps}>{props.labelText}</FormItemLabelTextStyled>
+      <FormItemFieldWrapStyled>{children}</FormItemFieldWrapStyled>
+    </FormItemLabelStyled>
   </FormItemWrapStyled>
 }
 
