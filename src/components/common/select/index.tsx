@@ -58,6 +58,22 @@ const Index: React.FC<SelectProps> = ({value: selectValue, multiple, onChange, .
       selected: isOptionSelected(option.value)
     })), [ props.options, selectValue]);
 
+  const selectedOptions = useMemo(() => {
+    const options = props.options;
+    if (selectValue === '') {
+      return [];
+    }
+
+    if (!multiple) {
+      const selectedOption = selectOptions.find(option => option.value);
+      return selectedOption ? [selectedOption] : [];
+    }
+
+    return multipleSelectValue.map(value => {
+      return options.find(option => option.value === value);
+    });
+  }, [ props.options, selectValue, multiple ]);
+
   const handleSingleSelectChange: (option: OptionType) => void = option => {
     setShowDropdown(false);
 
@@ -113,13 +129,13 @@ const Index: React.FC<SelectProps> = ({value: selectValue, multiple, onChange, .
   }, [ showDropdown ]);
 
   return <ThemeProvider theme={baseComponentsTheme}>
-    <SelectWrapStyled ref={selectWrapRef} onClick={(e) => { e.stopPropagation(); e.preventDefault(); }}>
+    <SelectWrapStyled ref={selectWrapRef} onClick={(e) => { e.preventDefault(); }}>
       <Input
         readOnly
         size={props.size}
         type={props.type}
         placeholder={props.placeholder || 'Please select'}
-        value={selectOptions.filter(option => option.selected).map(option => option.label).toString()}
+        value={selectedOptions.map(option => option?.label).join(', ')}
         onClick={() => setShowDropdown(!showDropdown)}
       />
       <SelectDropdownStyled show={showDropdown} size={props.size || 'md'}>
