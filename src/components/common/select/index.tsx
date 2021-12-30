@@ -108,9 +108,11 @@ const Index: React.FC<SelectProps> = ({value: selectValue, multiple, onChange, .
   const selectWrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClickOutside: EventListenerOrEventListenerObject = (event) => {
-      if (!showDropdown) { return; }
+    if (!showDropdown) {
+      return;
+    }
 
+    const handleClickOutside: EventListenerOrEventListenerObject = (event) => {
       const selectWrapDom = selectWrapRef.current;
       if (!selectWrapDom) { return; }
 
