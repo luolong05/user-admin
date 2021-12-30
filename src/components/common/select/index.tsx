@@ -116,8 +116,9 @@ const Index: React.FC<SelectProps> = ({value: selectValue, multiple, onChange, .
     <SelectWrapStyled ref={selectWrapRef}>
       <Input
         readOnly
-        size={props.size} t
-        ype={props.type}
+        size={props.size}
+        type={props.type}
+        placeholder={props.placeholder || 'Please select'}
         value={selectOptions.filter(option => option.selected).map(option => option.label).toString()}
         onClick={() => setShowDropdown(!showDropdown)}
       />
