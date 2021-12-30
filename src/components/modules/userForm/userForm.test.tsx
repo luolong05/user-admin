@@ -13,7 +13,7 @@ describe("Test the form element of the userForm component", () => {
 
   it('userForm must have a commit button', () => {
     const { getByText } = render(<UserForm />);
-    const commitBtn = getByText('Commit');
+    const commitBtn = getByText('Submit');
 
     expect(commitBtn).toBeInTheDocument();
   });
@@ -22,7 +22,7 @@ describe("Test the form element of the userForm component", () => {
 describe("Test the form function", () => {
   it('before input, the commit button is disabled', () => {
     const { getByText } = render(<UserForm />);
-    const commitBtn = getByText('Commit');
+    const commitBtn = getByText('Submit');
 
     expect(commitBtn).toBeDisabled();
   });
@@ -30,7 +30,7 @@ describe("Test the form function", () => {
   it('after input, the commit button is enabled', () => {
     const { container, getByText } = render(<UserForm />);
     const userNameInput = queryByAttribute("name", container, "userName");
-    const commitBtn = getByText('Commit');
+    const commitBtn = getByText('Submit');
 
     if (userNameInput) {
       userEvent.type(userNameInput, '12345678901234567890123')
@@ -53,7 +53,7 @@ describe("Test the form function", () => {
   it('after click commit button, show input result', () => {
     const { container, getByText } = render(<UserForm />);
     const userNameInput = queryByAttribute("name", container, "userName");
-    const commitBtn = getByText('Commit');
+    const commitBtn = getByText('Submit');
 
     if (userNameInput) {
       userEvent.type(userNameInput, '12345678901234567890123')
