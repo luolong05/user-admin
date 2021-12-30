@@ -2,17 +2,13 @@ import React, {useMemo, useState} from "react";
 import Button from "@commonUI/button";
 import Input from "@commonUI/input";
 import { Radio, RadioGroup } from "@commonUI/radio";
-import Select, { OptionType, SelectValueType } from "@commonUI/select";
+import Select, { SelectValueType } from "@commonUI/select";
 import FormItem, { FormItemFlexDirection } from "@commonUI/formItem";
 import { formItemRules } from "@/config/tsDataTypes/form";
 import { UserFormWrapStyled, UserFormStyled, UserFormResultStyled, UserFormBtnWrapStyled } from "./userForm.styled";
 import styleConfig from "@/config/layout";
-import { getListLabelByValue } from "@/utils/tools";
-
-interface UserActive {
-  value: number;
-  label: string;
-}
+import {getListLabelByValue} from "@/utils/tools";
+import {userActiveList, userSkillList, userAreaList} from "./testData"
 
 interface FormRules {
   userName: formItemRules;
@@ -23,24 +19,6 @@ const userFormRules: FormRules = {
     maxLength: 20
   }
 };
-const userActiveList: UserActive[] = [
-  { value: 1, label: 'Yes' },
-  { value: 0, label: 'No' },
-];
-const userAreaList: OptionType[] = [
-  { value: "area1", label: 'Area-1' },
-  { value: "area2", label: 'Area-2' },
-  { value: "area3", label: 'Area-3' },
-  { value: "area4", label: 'Area-4' },
-  { value: "area5", label: 'Area-5' },
-];
-const userSkillList: OptionType[] = [
-  { value: "js", label: 'Javascript' },
-  { value: "ts", label: 'Typescript' },
-  { value: "html", label: 'Html' },
-  { value: "css", label: 'Css' },
-  { value: "react", label: 'React' },
-];
 
 const
   isMobileScreen: boolean = screen.width <= styleConfig.mobileScreenMaxWidth,
@@ -51,7 +29,7 @@ const
 const UserForm: React.FC = () => {
   const [ userName, setUserName ] = useState("");
   const [ userActive, setUserActive ] = useState(1);
-  const [ userSkill, setUserSkill ] = useState<SelectValueType>("");
+  const [ userSkills, setUserSkills ] = useState<SelectValueType>([]);
   const [ userArea, setUserArea ] = useState<SelectValueType>("");
   const [ showInputResult, setShowInputResult ] = useState(false);
   const isBtnDisable: boolean = useMemo(() => {
@@ -106,7 +84,7 @@ const UserForm: React.FC = () => {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserActive(+e.target.value)}
           >
             {
-              userActiveList.map((active: UserActive) => <Radio key={active.value} value={active.value}>{active.label}</Radio>)
+              userActiveList.map((active) => <Radio key={active.value} value={active.value}>{active.label}</Radio>)
             }
           </RadioGroup>
         </FormItem>
@@ -118,10 +96,10 @@ const UserForm: React.FC = () => {
         >
           <Select
             name='userSkills'
-            value={userSkill}
+            value={userSkills}
             options={userSkillList}
             multiple={true}
-            onChange={setUserSkill}
+            onChange={setUserSkills}
           />
         </FormItem>
         <FormItem
