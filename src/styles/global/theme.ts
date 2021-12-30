@@ -9,5 +9,6 @@ export default {
   textDefaultColor: '#252323',
   textDefaultFontSize: '14px',
   backgroundDefaultColor: '#fff',
+  backgroundDefaultColorActive: '#e8e8e8',
   bgPrimaryActiveFontColor: '#fff',
 };
