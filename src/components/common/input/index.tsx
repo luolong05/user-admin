@@ -15,7 +15,6 @@ export interface InputProps {
 const Input: React.FC<InputProps> = ({ size, type, htmlType, ...props }) => {
   const inputStyledProps = {
     ...props,
-    id: props.name,
     inputSize: size || 'md',
     inputType: type || 'default',
     type: htmlType,
