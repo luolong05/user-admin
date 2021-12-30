@@ -65,7 +65,7 @@ const Index: React.FC<SelectProps> = ({value: selectValue, multiple, onChange, .
     }
 
     if (!multiple) {
-      const selectedOption = selectOptions.find(option => option.value);
+      const selectedOption = selectOptions.find(option => option.value === selectValue);
       return selectedOption ? [selectedOption] : [];
     }
 
