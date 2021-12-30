@@ -54,7 +54,7 @@ export default styled.input<InputStyledCustomProps>`
   background-color: ${props => props.theme.backgroundDefaultColor};
   color: ${props => props.theme.textDefaultColor};
   font-size: ${props => inputFontSize[props.inputSize]};
-  border-radius: 2px;
+  border-radius: ${baseComponentsTheme.formFieldBorderRadius};
   &:focus {
     border-color: ${props => inputFocusBorderColor[props.inputType]};
   }
