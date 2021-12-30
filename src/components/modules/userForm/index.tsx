@@ -50,13 +50,14 @@ const UserForm: React.FC = () => {
     setShowInputResult(false);
   };
 
-  const handleCommit: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void = () => {
+  const handleCommit: (event: React.FormEvent<HTMLFormElement>) => void = (event) => {
+    event.preventDefault();
     setShowInputResult(true);
   };
 
   return (
     <UserFormWrapStyled>
-      <UserFormStyled>
+      <UserFormStyled onSubmit={handleCommit}>
         <FormItem
           flexDirection={formItemFlexDirection}
           labelText='Name:'
@@ -110,11 +111,10 @@ const UserForm: React.FC = () => {
         <UserFormBtnWrapStyled>
           <Button
             type='primary'
-            htmlType='button'
+            htmlType='submit'
             disabled={isBtnDisable}
-            onClick={handleCommit}
           >
-            Commit
+            Submit
           </Button>
         </UserFormBtnWrapStyled>
       </UserFormStyled>
