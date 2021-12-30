@@ -81,12 +81,9 @@ const UserForm: React.FC = () => {
           <RadioGroup
             name='userActive'
             value={userActive}
+            options={userActiveList}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserActive(+e.target.value)}
-          >
-            {
-              userActiveList.map((active) => <Radio key={active.value} value={active.value}>{active.label}</Radio>)
-            }
-          </RadioGroup>
+          />
         </FormItem>
         <FormItem
           flexDirection={formItemFlexDirection}
