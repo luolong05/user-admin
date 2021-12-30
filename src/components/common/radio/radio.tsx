@@ -3,12 +3,13 @@ import { ThemeProvider } from "styled-components";
 import baseComponentsTheme from "@/styles/baseComponents/theme";
 import { RadioLabelStyled, RadioTextStyled, RadioStyled } from "./radio.styled";
 
-export type RadioValue = string | number;
+export type RadioValueType = string | number;
 export interface RadioProps {
-  value?: RadioValue;
+  value?: RadioValueType;
   name?: string;
   checked?: boolean;
   disabled?: boolean;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Radio: React.FC<RadioProps> = ({children, ...props}) => {

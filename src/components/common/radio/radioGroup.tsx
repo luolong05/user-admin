@@ -1,28 +1,34 @@
 import React from "react";
 import {RadioGroupWrapStyled} from "./radioGroup.styled";
-import { RadioValue } from "./radio";
+import Radio, {RadioValueType} from "./radio";
 
-interface RadioGroupProps {
+export interface OptionType {
+  value: RadioValueType;
+  label: string;
+  disabled?: boolean;
+}
+
+export interface RadioGroupProps {
   name: string;
-  value?: RadioValue;
+  value?: RadioValueType;
+  options: OptionType[];
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const RadioGroup: React.FC<RadioGroupProps> = ({value, children, ...props}) => {
+const RadioGroup: React.FC<RadioGroupProps> = ({value, options, ...props}) => {
   return <RadioGroupWrapStyled>
     {
-      React.Children.map(children, (child: React.ReactNode) => {
-        if (!React.isValidElement(child)) {
-          return child;
-        }
-
-        return React.cloneElement(child, {
-          ...child.props,
-          name: props.name,
-          checked: value === child.props.value,
-          onChange: props.onChange,
-        });
-      })
+      options.map((option: OptionType) =>
+        <Radio
+          key={option.value}
+          value={option.value}
+          checked={value === option.value}
+          disabled={option.disabled}
+          onChange={props.onChange}
+        >
+          {option.label}
+        </Radio>
+      )
     }
   </RadioGroupWrapStyled>
 };
