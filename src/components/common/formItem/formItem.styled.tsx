@@ -21,6 +21,10 @@ export const FormItemLabelStyled = styled.label<Pick<FormItemLabelStyledProps, '
   flex-direction: ${props => props.flexDirection || 'row'};
   align-items: ${props => props.flexDirection === 'row' ? 'center' : 'stretch'};
   width: 100%;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
 `;
 
 export const FormItemLabelTextStyled = styled.span<FormItemLabelStyledProps>`
@@ -36,6 +40,12 @@ export const FormItemLabelTextStyled = styled.span<FormItemLabelStyledProps>`
   font-size: ${props => props.labelFontSize || props.theme.textDefaultFontSize};
   color: ${props => props.labelFontColor || props.theme.textDefaultColor};
   cursor: pointer;
+  @media (max-width: 768px) {
+    flex-basis: 100%;
+    margin: 0 0 8px 0;
+    text-align: left;
+    align-items: stretch;
+  }
 `;
 
 export const FormItemFieldWrapStyled = styled.div`

@@ -3,10 +3,9 @@ import Button from "@commonUI/button";
 import Input from "@commonUI/input";
 import { RadioGroup } from "@commonUI/radio";
 import Select, { SelectValueType } from "@commonUI/select";
-import FormItem, { FormItemFlexDirection } from "@commonUI/formItem";
+import FormItem from "@commonUI/formItem";
 import { formItemRules } from "@/config/tsDataTypes/form";
 import { UserFormWrapStyled, UserFormStyled, UserFormResultStyled, UserFormBtnWrapStyled } from "./userForm.styled";
-import styleConfig from "@/config/layout";
 import {getListLabelByValue} from "@/utils/tools";
 import {userActiveList, userSkillList, userAreaList} from "./testData"
 
@@ -19,11 +18,6 @@ const userFormRules: FormRules = {
     maxLength: 20
   }
 };
-
-const
-  isMobileScreen: boolean = screen.width <= styleConfig.mobileScreenMaxWidth,
-  formItemFlexDirection: FormItemFlexDirection = isMobileScreen ? 'column' : 'row',
-  labelTextAlign: string = isMobileScreen ? 'left' : 'right';
 
 const UserForm: React.FC = () => {
   const [ userName, setUserName ] = useState("");
@@ -59,9 +53,7 @@ const UserForm: React.FC = () => {
     <UserFormWrapStyled>
       <UserFormStyled onSubmit={handleCommit}>
         <FormItem
-          flexDirection={formItemFlexDirection}
           labelText='Name:'
-          labelTextAlign={labelTextAlign}
         >
           <Input
             value={userName}
@@ -72,9 +64,7 @@ const UserForm: React.FC = () => {
           />
         </FormItem>
         <FormItem
-          flexDirection={formItemFlexDirection}
           labelText='Active:'
-          labelTextAlign={labelTextAlign}
         >
           <RadioGroup
             name='userActive'
@@ -84,9 +74,7 @@ const UserForm: React.FC = () => {
           />
         </FormItem>
         <FormItem
-          flexDirection={formItemFlexDirection}
           labelText='Skills:'
-          labelTextAlign={labelTextAlign}
         >
           <Select
             name='userSkills'
@@ -97,9 +85,7 @@ const UserForm: React.FC = () => {
           />
         </FormItem>
         <FormItem
-          flexDirection={formItemFlexDirection}
           labelText='Area:'
-          labelTextAlign={labelTextAlign}
         >
           <Select
             name='userArea'
