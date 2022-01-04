@@ -1,9 +1,10 @@
-import React, {useMemo, useState} from "react";
+import React, {useMemo, useState, useReducer} from "react";
 import {Button, Input, RadioGroup, Select, SelectValueType, FormItem} from "@commonUI/index";
 import {formItemRules} from "@/config/tsDataTypes/form";
 import {UserFormWrapStyled, UserFormStyled, UserFormResultStyled, UserFormBtnWrapStyled} from "./userForm.styled";
 import {getListLabelByValue} from "@/utils/tools";
-import {userActiveList, userSkillList, userAreaList} from "./testData"
+import {userActiveList, userSkillList, userAreaList} from "./testData";
+import {ActionTypes, initState, reducer} from "./reducer";
 
 interface FormRules {
   userName: formItemRules;
@@ -16,17 +17,14 @@ const userFormRules: FormRules = {
 };
 
 const UserForm: React.FC = () => {
-  const [ userName, setUserName ] = useState("");
-  const [ userActive, setUserActive ] = useState(1);
-  const [ userSkills, setUserSkills ] = useState<SelectValueType>([]);
-  const [ userArea, setUserArea ] = useState<SelectValueType>("");
+  const [ formData, dispatch ] = useReducer(reducer, initState);
   const [ showInputResult, setShowInputResult ] = useState(false);
   const isBtnDisable: boolean = useMemo(() => {
-    return !userName;
-  },[ userName ]);
+    return !formData.userName;
+  },[ formData.userName ]);
 
-  const handleUserNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (evt) => {
-    let newValue: string = evt.target.value;
+  const handleUserNameChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    let newValue: string = event.target.value;
     const userNameMaxLength: number | undefined = userFormRules.userName.maxLength || undefined;
     const isInputLengthOverflow: boolean =
       userNameMaxLength !== undefined
@@ -36,14 +34,25 @@ const UserForm: React.FC = () => {
       newValue = newValue.slice(0, userNameMaxLength);
     }
 
-    setUserName(newValue);
-    setShowInputResult(false);
+    dispatch({ type: ActionTypes.USER_NAME_CHANGE, userName: newValue });
   };
 
-  const handleCommit: (event: React.FormEvent<HTMLFormElement>) => void = (event) => {
+  const handleUserActiveChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    dispatch({ type: ActionTypes.USER_ACTIVE_CHANGE, userActive: +event.target.value });
+  }
+
+  const handleUserSkillsChange = (value: SelectValueType): void => {
+    dispatch({ type: ActionTypes.USER_SKILLS_CHANGE, userSkills: value });
+  }
+  
+  const handleUserAreaChange = (value: SelectValueType): void => {
+    dispatch({ type: ActionTypes.USER_AREA_CHANGE, userArea: value });
+  }
+  
+  const handleCommit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     setShowInputResult(true);
-  };
+  }
 
   return (
     <UserFormWrapStyled>
@@ -52,7 +61,7 @@ const UserForm: React.FC = () => {
           labelText='Name:'
         >
           <Input
-            value={userName}
+            value={formData.userName}
             name='userName'
             maxLength={userFormRules.userName.maxLength}
             placeholder='Please input'
@@ -64,9 +73,9 @@ const UserForm: React.FC = () => {
         >
           <RadioGroup
             name='userActive'
-            value={userActive}
+            value={formData.userActive}
             options={userActiveList}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserActive(+e.target.value)}
+            onChange={handleUserActiveChange}
           />
         </FormItem>
         <FormItem
@@ -74,10 +83,10 @@ const UserForm: React.FC = () => {
         >
           <Select
             name='userSkills'
-            value={userSkills}
+            value={formData.userSkills}
             options={userSkillList}
             multiple={true}
-            onChange={setUserSkills}
+            onChange={handleUserSkillsChange}
           />
         </FormItem>
         <FormItem
@@ -85,9 +94,9 @@ const UserForm: React.FC = () => {
         >
           <Select
             name='userArea'
-            value={userArea}
+            value={formData.userArea}
             options={userAreaList}
-            onChange={setUserArea}
+            onChange={handleUserAreaChange}
           />
         </FormItem>
         <UserFormBtnWrapStyled>
@@ -102,7 +111,7 @@ const UserForm: React.FC = () => {
       </UserFormStyled>
       {
         showInputResult &&
-        <UserFormResultStyled>The information you entered is: Name: {userName}, Active: {getListLabelByValue(userActiveList, userActive)}</UserFormResultStyled>
+        <UserFormResultStyled>The information you entered is: Name: {formData.userName}, Active: {getListLabelByValue(userActiveList, formData.userActive)}</UserFormResultStyled>
       }
     </UserFormWrapStyled>
   );
