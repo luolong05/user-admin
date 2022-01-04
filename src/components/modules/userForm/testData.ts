@@ -1,5 +1,4 @@
-import {OptionType as SelectOptionType} from "@commonUI/select";
-import {OptionType as RadioOptionType} from "@commonUI/radio/radioGroup";
+import {SelectOptionType, RadioOptionType} from "@commonUI/index";
 
 export const userAreaList: SelectOptionType[] = [
   { value: "area1", label: 'Area-1' },

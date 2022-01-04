@@ -1,11 +1,7 @@
 import React, {useMemo, useState} from "react";
-import Button from "@commonUI/button";
-import Input from "@commonUI/input";
-import { RadioGroup } from "@commonUI/radio";
-import Select, { SelectValueType } from "@commonUI/select";
-import FormItem from "@commonUI/formItem";
-import { formItemRules } from "@/config/tsDataTypes/form";
-import { UserFormWrapStyled, UserFormStyled, UserFormResultStyled, UserFormBtnWrapStyled } from "./userForm.styled";
+import {Button, Input, RadioGroup, Select, SelectValueType, FormItem} from "@commonUI/index";
+import {formItemRules} from "@/config/tsDataTypes/form";
+import {UserFormWrapStyled, UserFormStyled, UserFormResultStyled, UserFormBtnWrapStyled} from "./userForm.styled";
 import {getListLabelByValue} from "@/utils/tools";
 import {userActiveList, userSkillList, userAreaList} from "./testData"
 
