@@ -1,5 +1,9 @@
 import Radio from "./radio";
-import RadioGroup from "./radioGroup";
+import RadioGroup, {OptionType} from "./radioGroup";
+
+export type {
+  OptionType
+}
 
 export {
   Radio,
