@@ -50,8 +50,6 @@ describe('Test the functionality of the Select component', () => {
 
     render(<Select name='testSelect' value={selectValues} options={options} onChange={handleSelectValueChange} placeholder='Please select' />);
 
-    screen.debug();
-
     const optionTest1 = screen.getByText('test1-1');
     const optionTest2 = screen.getByText('test1-2');
     userEvent.click(optionTest1);
