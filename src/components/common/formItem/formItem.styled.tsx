@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { deviceSize } from "@/config/layout/";
 
 type flexDirection = 'row' | 'column';
 export interface FormItemLabelStyledProps {
@@ -21,7 +22,7 @@ export const FormItemLabelStyled = styled.label<Pick<FormItemLabelStyledProps, '
   flex-direction: ${props => props.flexDirection || 'row'};
   align-items: ${props => props.flexDirection === 'row' ? 'center' : 'stretch'};
   width: 100%;
-  @media (max-width: 768px) {
+  @media (max-width: ${deviceSize.pad}) {
     flex-direction: column;
     align-items: stretch;
   }
@@ -40,7 +41,7 @@ export const FormItemLabelTextStyled = styled.span<FormItemLabelStyledProps>`
   font-size: ${props => props.labelFontSize || props.theme.textDefaultFontSize};
   color: ${props => props.labelFontColor || props.theme.textDefaultColor};
   cursor: pointer;
-  @media (max-width: 768px) {
+  @media (max-width: ${deviceSize.pad}) {
     flex-basis: 100%;
     margin: 0 0 8px 0;
     text-align: left;

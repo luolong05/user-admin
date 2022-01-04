@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import styleConfig from "@/config/layout";
+import { deviceSize } from "@/config/layout/";
 
-const mobileScreenMaxWidth = styleConfig.mobileScreenMaxWidth;
 export const UserFormWrapStyled = styled.div`
   padding: 150px 12px 0;
 `;
@@ -9,7 +8,7 @@ export const UserFormWrapStyled = styled.div`
 export const UserFormStyled = styled.form`
   margin: 0 auto;
   width: 400px;
-  @media (max-width: ${mobileScreenMaxWidth}px) {
+  @media (max-width: ${deviceSize.pad}) {
     width: 100%;
   }
 `;
