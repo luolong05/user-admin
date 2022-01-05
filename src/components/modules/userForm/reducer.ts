@@ -20,10 +20,10 @@ export interface FormData {
 }
 
 export type Actions = 
-  { type: 'USER_NAME_CHANGE'; userName: UserNameType; } |
-  { type: 'USER_ACTIVE_CHANGE'; userActive: UserActiveType; } |
-  { type: 'USER_SKILLS_CHANGE'; userSkills: UserSkillsType; } |
-  { type: 'USER_AREA_CHANGE'; userArea: UserAreaType; }
+  { type: 'USER_NAME_CHANGE'; payload: UserNameType; } |
+  { type: 'USER_ACTIVE_CHANGE'; payload: UserActiveType; } |
+  { type: 'USER_SKILLS_CHANGE'; payload: UserSkillsType; } |
+  { type: 'USER_AREA_CHANGE'; payload: UserAreaType; }
 
 export const initState:FormData = {
   userName: '',
@@ -35,13 +35,13 @@ export const initState:FormData = {
 export const reducer = (state: FormData, action: Actions): FormData => {
   switch (action.type) {
     case ActionTypes.USER_NAME_CHANGE: 
-      return { ...state, userName: action.userName };
+      return { ...state, userName: action.payload };
     case ActionTypes.USER_ACTIVE_CHANGE: 
-      return { ...state, userActive: action.userActive };
+      return { ...state, userActive: action.payload };
     case ActionTypes.USER_SKILLS_CHANGE: 
-      return { ...state, userSkills: action.userSkills };
+      return { ...state, userSkills: action.payload };
     case ActionTypes.USER_AREA_CHANGE: 
-      return { ...state, userArea: action.userArea };
+      return { ...state, userArea: action.payload };
     default:
       return state;
   }

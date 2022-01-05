@@ -34,19 +34,19 @@ const UserForm: React.FC = () => {
       newValue = newValue.slice(0, userNameMaxLength);
     }
 
-    dispatch({ type: ActionTypes.USER_NAME_CHANGE, userName: newValue });
+    dispatch({ type: ActionTypes.USER_NAME_CHANGE, payload: newValue });
   };
 
   const handleUserActiveChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    dispatch({ type: ActionTypes.USER_ACTIVE_CHANGE, userActive: +event.target.value });
+    dispatch({ type: ActionTypes.USER_ACTIVE_CHANGE, payload: +event.target.value });
   }
 
   const handleUserSkillsChange = (value: SelectValueType): void => {
-    dispatch({ type: ActionTypes.USER_SKILLS_CHANGE, userSkills: value });
+    dispatch({ type: ActionTypes.USER_SKILLS_CHANGE, payload: value });
   }
   
   const handleUserAreaChange = (value: SelectValueType): void => {
-    dispatch({ type: ActionTypes.USER_AREA_CHANGE, userArea: value });
+    dispatch({ type: ActionTypes.USER_AREA_CHANGE, payload: value });
   }
   
   const handleCommit = (event: React.FormEvent<HTMLFormElement>): void => {
