@@ -21,6 +21,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({value, options, ...props}) => {
       options.map((option: OptionType) =>
         <Radio
           key={option.value}
+          name={props.name}
           value={option.value}
           checked={value === option.value}
           disabled={option.disabled}
