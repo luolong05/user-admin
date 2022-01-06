@@ -3,7 +3,7 @@ import {Button, Input, RadioGroup, Select, SelectValueType, FormItem} from "@com
 import {formItemRules} from "@/config/tsDataTypes/form";
 import {UserFormWrapStyled, UserFormStyled, UserFormResultStyled, UserFormBtnWrapStyled} from "./userForm.styled";
 import {getListLabelByValue} from "@/utils/tools";
-import {userActiveList, userSkillList, userAreaList} from "./testData";
+import {userActiveList, userSkillList, userPositionList} from "./testData";
 import {ActionTypes, initState, reducer} from "./reducer";
 
 interface FormRules {
@@ -19,6 +19,8 @@ const userFormRules: FormRules = {
 const UserForm: React.FC = () => {
   const [ formData, dispatch ] = useReducer(reducer, initState);
   const [ showInputResult, setShowInputResult ] = useState(false);
+  const [ skillList, setSkillList ] = useState(userSkillList);
+
   const isBtnDisable: boolean = useMemo(() => {
     return !formData.userName;
   },[ formData.userName ]);
@@ -41,12 +43,15 @@ const UserForm: React.FC = () => {
     dispatch({ type: ActionTypes.USER_ACTIVE_CHANGE, payload: +event.target.value });
   }
 
+  const handleUserPositionChange = (value: SelectValueType): void => {
+    dispatch({ type: ActionTypes.USER_POSITION_CHANGE, payload: value });
+
+    setSkillList(userSkillList.filter(skill => skill.pid === value));
+    dispatch({ type: ActionTypes.USER_SKILLS_CHANGE, payload: '' });
+  }
+
   const handleUserSkillsChange = (value: SelectValueType): void => {
     dispatch({ type: ActionTypes.USER_SKILLS_CHANGE, payload: value });
-  }
-  
-  const handleUserAreaChange = (value: SelectValueType): void => {
-    dispatch({ type: ActionTypes.USER_AREA_CHANGE, payload: value });
   }
   
   const handleCommit = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -79,24 +84,24 @@ const UserForm: React.FC = () => {
           />
         </FormItem>
         <FormItem
+          labelText='Position:'
+        >
+          <Select
+            name='userPosition'
+            value={formData.userPosition}
+            options={userPositionList}
+            onChange={handleUserPositionChange}
+          />
+        </FormItem>
+        <FormItem
           labelText='Skills:'
         >
           <Select
             name='userSkills'
             value={formData.userSkills}
-            options={userSkillList}
+            options={skillList}
             multiple={true}
             onChange={handleUserSkillsChange}
-          />
-        </FormItem>
-        <FormItem
-          labelText='Area:'
-        >
-          <Select
-            name='userArea'
-            value={formData.userArea}
-            options={userAreaList}
-            onChange={handleUserAreaChange}
           />
         </FormItem>
         <UserFormBtnWrapStyled>

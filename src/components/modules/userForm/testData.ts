@@ -1,19 +1,18 @@
 import {SelectOptionType, RadioOptionType} from "@commonUI/index";
 
-export const userAreaList: SelectOptionType[] = [
-  { value: "area1", label: 'Area-1' },
-  { value: "area2", label: 'Area-2' },
-  { value: "area3", label: 'Area-3' },
-  { value: "area4", label: 'Area-4' },
-  { value: "area5", label: 'Area-5' },
+export const userPositionList: SelectOptionType[] = [
+  { value: 'frontEnd', label: 'Front-end' },
+  { value: 'backEnd', label: 'Back-end' },
 ];
 
 export const userSkillList: SelectOptionType[] = [
-  { value: "js", label: 'Javascript' },
-  { value: "ts", label: 'Typescript' },
-  { value: "html", label: 'Html' },
-  { value: "css", label: 'Css' },
-  { value: "react", label: 'React' },
+  { pid: 'frontEnd', value: 'js', label: 'Javascript' },
+  { pid: 'frontEnd', value: 'ts', label: 'Typescript' },
+  { pid: 'frontEnd', value: 'html', label: 'Html' },
+  { pid: 'frontEnd', value: 'css', label: 'Css' },
+  { pid: 'frontEnd', value: 'react', label: 'React' },
+  { pid: 'backEnd', value: 'java', label: 'Java' },
+  { pid: 'backEnd', value: 'go', label: 'Go' },
 ];
 
 export const userActiveList: RadioOptionType[] = [
