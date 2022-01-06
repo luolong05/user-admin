@@ -13,6 +13,7 @@ export interface OptionType {
   value: OptionValueType;
   label: string;
   disabled?: boolean;
+  pid?: OptionValueType;
 }
 
 export interface SelectProps {
