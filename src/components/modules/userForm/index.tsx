@@ -108,7 +108,7 @@ const UserForm: React.FC = () => {
       </UserFormStyled>
       {showInputResult && (
         <UserFormResultStyled>
-          The information you entered is: Name: {formData.userName}, Active:{' '}
+          The information you entered is: Name: {formData.userName}, Active:
           {getListLabelByValue(userActiveList, formData.userActive)}
         </UserFormResultStyled>
       )}
