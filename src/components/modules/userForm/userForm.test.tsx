@@ -1,52 +1,66 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import {
+  render,
+  ByRoleMatcher,
+  ByRoleOptions,
+  Matcher,
+  SelectorMatcherOptions,
+} from '@testing-library/react';
 import UserForm from './index';
 import userEvent from '@testing-library/user-event';
 
+let getByRole: (role: ByRoleMatcher, options?: ByRoleOptions | undefined) => HTMLElement,
+  getByText: (id: Matcher, options?: SelectorMatcherOptions | undefined) => HTMLElement;
+
+const userNameText = 'Name:',
+  userActiveLabelText = 'Active:',
+  userActiveGroupText = 'Active: Yes No',
+  userPositionText = 'Position:',
+  userSkillsText = 'Skills:',
+  submitBtnText = 'Submit';
+
+beforeEach(() => {
+  const userFormComp = render(<UserForm />);
+
+  getByRole = userFormComp.getByRole;
+  getByText = userFormComp.getByText;
+});
+
 describe('Test the form element of the userForm component', () => {
   it('userForm must have a input named userName', () => {
-    const { getByRole, getByText } = render(<UserForm />);
-    const nameText = 'Name:';
-    const userNameLabel = getByText(nameText);
-    const userNameEl = getByRole('textbox', { name: nameText });
+    const userNameLabel = getByText(userNameText);
+    const userNameEl = getByRole('textbox', { name: userNameText });
 
     expect(userNameLabel).toBeInTheDocument();
     expect(userNameEl).toBeInTheDocument();
   });
 
   it('userForm must have a radio group named userActive', () => {
-    const { getByRole, getByText } = render(<UserForm />);
-    const activeText = 'Active:';
-    const userActiveLabel = getByText(activeText);
-    const userActiveEls = getByRole('radio', { name: 'Active: Yes No' });
+    const userActiveLabel = getByText(userActiveLabelText);
+    const userActiveEls = getByRole('radio', { name: userActiveGroupText });
 
     expect(userActiveLabel).toBeInTheDocument();
     expect(userActiveEls).toBeInTheDocument();
   });
 
   it('userForm must have a select named userPosition', () => {
-    const { getByRole, getByText } = render(<UserForm />);
-    const positionText = 'Position:';
-    const userPositionLabel = getByText(positionText);
-    const userPositionEl = getByRole('textbox', { name: positionText });
+    const userPositionLabel = getByText(userPositionText);
+    const userPositionEl = getByRole('textbox', { name: userPositionText });
 
     expect(userPositionLabel).toBeInTheDocument();
     expect(userPositionEl).toBeInTheDocument();
   });
 
   it('userForm must have a select named userSkills', () => {
-    const { getByRole, getByText } = render(<UserForm />);
-    const skillsText = 'Skills:';
-    const userSkillsLabel = getByText(skillsText);
-    const userSkillsEl = getByRole('textbox', { name: skillsText });
+    const userSkillsLabel = getByText(userSkillsText);
+    const userSkillsEl = getByRole('textbox', { name: userSkillsText });
 
     expect(userSkillsLabel).toBeInTheDocument();
     expect(userSkillsEl).toBeInTheDocument();
   });
 
   it('userForm must have a commit button', () => {
-    const { getByRole } = render(<UserForm />);
-    const commitBtn = getByRole('button', { name: 'Submit' });
+    const commitBtn = getByRole('button', { name: submitBtnText });
 
     expect(commitBtn).toBeInTheDocument();
   });
@@ -54,16 +68,14 @@ describe('Test the form element of the userForm component', () => {
 
 describe('Test the form function', () => {
   it('before input, the commit button is disabled', () => {
-    const { getByRole } = render(<UserForm />);
-    const commitBtn = getByRole('button', { name: 'Submit' });
+    const commitBtn = getByRole('button', { name: submitBtnText });
 
     expect(commitBtn).toBeDisabled();
   });
 
   it('after input, the commit button is enabled', () => {
-    const { getByRole } = render(<UserForm />);
-    const userNameInput = getByRole('textbox', { name: 'Name:' });
-    const commitBtn = getByRole('button', { name: 'Submit' });
+    const userNameInput = getByRole('textbox', { name: userNameText });
+    const commitBtn = getByRole('button', { name: submitBtnText });
 
     if (userNameInput) {
       userEvent.type(userNameInput, '1');
@@ -73,8 +85,7 @@ describe('Test the form function', () => {
   });
 
   it("The user name input value's max length is 20 ", () => {
-    const { getByRole } = render(<UserForm />);
-    const userNameInput = getByRole('textbox', { name: 'Name:' });
+    const userNameInput = getByRole('textbox', { name: userNameText });
 
     if (userNameInput) {
       userEvent.type(userNameInput, '12345678901234567890123');
@@ -84,9 +95,8 @@ describe('Test the form function', () => {
   });
 
   it('after click commit button, show input result', () => {
-    const { getByRole, getByText } = render(<UserForm />);
-    const userNameEl = getByRole('textbox', { name: 'Name:' });
-    const commitBtn = getByRole('button', { name: 'Submit' });
+    const userNameEl = getByRole('textbox', { name: userNameText });
+    const commitBtn = getByRole('button', { name: submitBtnText });
 
     if (userNameEl) {
       userEvent.type(userNameEl, '12345678901234567890123');
