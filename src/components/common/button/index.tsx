@@ -1,12 +1,12 @@
-import React from "react";
-import ButtonStyled, { ButtonSizes, ButtonTypes } from "./button.styled";
+import React from 'react';
+import ButtonStyled, { ButtonSizes, ButtonTypes } from './button.styled';
 
 type btnTypes = keyof ButtonTypes;
 type btnSizes = keyof ButtonSizes;
 interface ButtonProps {
   type?: btnTypes;
   size?: btnSizes;
-  htmlType?: "button" | "submit" | "reset" | undefined;
+  htmlType?: 'button' | 'submit' | 'reset' | undefined;
   disabled?: boolean | undefined;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({ htmlType, children, ...props }) => {
     ...props,
     size: props.size || 'md',
     btnType: props.type || 'default',
-    type: htmlType
+    type: htmlType,
   };
 
   return (

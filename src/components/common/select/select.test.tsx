@@ -1,7 +1,7 @@
-import React from "react";
-import Select, {SelectValueType, OptionType} from "./index";
-import {render, screen} from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import React from 'react';
+import Select, { SelectValueType, OptionType } from './index';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 const options: OptionType[] = [
   { value: 'test1', label: 'test1-1' },
@@ -11,7 +11,15 @@ const options: OptionType[] = [
 describe('Check if the select is rendered', () => {
   it('Render the Select, then check it if in the document', () => {
     const handleSelectValueChange = jest.fn();
-    render(<Select name='testSelect' value='' options={options} onChange={handleSelectValueChange} placeholder='Please select' />);
+    render(
+      <Select
+        name="testSelect"
+        value=""
+        options={options}
+        onChange={handleSelectValueChange}
+        placeholder="Please select"
+      />
+    );
 
     const select = screen.getByPlaceholderText('Please select');
 
@@ -28,11 +36,11 @@ describe('Test the functionality of the Select component', () => {
 
     render(
       <Select
-        name='testSelect'
-        value=''
+        name="testSelect"
+        value=""
         options={options}
         onChange={handleSelectValueChange}
-        placeholder='Please select'
+        placeholder="Please select"
       />
     );
 
@@ -48,12 +56,20 @@ describe('Test the functionality of the Select component', () => {
       selectValues = value;
     };
 
-    render(<Select name='testSelect' value={selectValues} options={options} onChange={handleSelectValueChange} placeholder='Please select' />);
+    render(
+      <Select
+        name="testSelect"
+        value={selectValues}
+        options={options}
+        onChange={handleSelectValueChange}
+        placeholder="Please select"
+      />
+    );
 
     const optionTest1 = screen.getByText('test1-1');
     const optionTest2 = screen.getByText('test1-2');
     userEvent.click(optionTest1);
-    expect(selectValues).toContain("test1");
+    expect(selectValues).toContain('test1');
 
     userEvent.click(optionTest2);
     expect(selectValues).toContain('test2');

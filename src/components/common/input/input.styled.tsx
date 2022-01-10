@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import globalTheme from "@/styles/global/theme";
-import baseComponentsTheme from "@/styles/baseComponents/theme";
+import styled from 'styled-components';
+import globalTheme from '@/styles/global/theme';
+import baseComponentsTheme from '@/styles/baseComponents/theme';
 
 export interface InputSizes {
   sm: string;
@@ -48,15 +48,15 @@ const inputDisabledStyle = `
 `;
 
 export default styled.input<InputStyledCustomProps>`
-  border: 1px solid ${props => inputBorderColor[props.inputType]};
-  padding: ${props => inputPadding[props.inputSize]};
+  border: 1px solid ${(props) => inputBorderColor[props.inputType]};
+  padding: ${(props) => inputPadding[props.inputSize]};
   width: 100%;
-  background-color: ${props => props.theme.backgroundDefaultColor};
-  color: ${props => props.theme.textDefaultColor};
-  font-size: ${props => inputFontSize[props.inputSize]};
+  background-color: ${(props) => props.theme.backgroundDefaultColor};
+  color: ${(props) => props.theme.textDefaultColor};
+  font-size: ${(props) => inputFontSize[props.inputSize]};
   border-radius: ${baseComponentsTheme.formFieldBorderRadius};
   &:focus {
-    border-color: ${props => inputFocusBorderColor[props.inputType]};
+    border-color: ${(props) => inputFocusBorderColor[props.inputType]};
   }
   &[disabled] {
     ${inputDisabledStyle}
@@ -64,4 +64,4 @@ export default styled.input<InputStyledCustomProps>`
       ${inputDisabledStyle}
     }
   }
-`
+`;

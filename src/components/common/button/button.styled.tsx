@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import globalTheme from "@/styles/global/theme";
-import baseComponentsTheme from "@/styles/baseComponents/theme";
+import styled from 'styled-components';
+import globalTheme from '@/styles/global/theme';
+import baseComponentsTheme from '@/styles/baseComponents/theme';
 
 export interface ButtonSizes {
   sm: string;
@@ -37,7 +37,7 @@ const buttonBackgroundColor: ButtonTypes = {
   primary: globalTheme.colorPrimary,
 };
 const buttonHoverBackgroundColor: ButtonTypes = {
-  default:  globalTheme.colorDefaultActive,
+  default: globalTheme.colorDefaultActive,
   primary: globalTheme.colorPrimaryActive,
 };
 const buttonFontColor: ButtonTypes = {
@@ -52,16 +52,16 @@ const buttonDisabledStyle = `
 `;
 
 export default styled.button<ButtonStyledCustomProps>`
-  border: 1px solid ${props => buttonBorderColor[props.btnType]};
-  padding: ${props => buttonPadding[props.size]};
-  background-color: ${props => buttonBackgroundColor[props.btnType]};
-  color: ${props => buttonFontColor[props.btnType]};
-  font-size: ${props => buttonFontSize[props.size]};
+  border: 1px solid ${(props) => buttonBorderColor[props.btnType]};
+  padding: ${(props) => buttonPadding[props.size]};
+  background-color: ${(props) => buttonBackgroundColor[props.btnType]};
+  color: ${(props) => buttonFontColor[props.btnType]};
+  font-size: ${(props) => buttonFontSize[props.size]};
   border-radius: ${baseComponentsTheme.formFieldBorderRadius};
   cursor: pointer;
-  transition: background-color .2s;
+  transition: background-color 0.2s;
   &:hover {
-    background-color: ${props => buttonHoverBackgroundColor[props.btnType]};
+    background-color: ${(props) => buttonHoverBackgroundColor[props.btnType]};
   }
   &[disabled] {
     ${buttonDisabledStyle}

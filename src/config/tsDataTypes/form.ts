@@ -1,12 +1,13 @@
-export interface formItemValidateRules {
+export type FormRuleMaxLengthType = number | undefined;
+export interface FormValidateRules {
   required?: boolean;
   trigger?: string;
   message?: string;
   validator?: () => void
 }
 
-export interface formItemRules {
-  maxLength?: number;
+export interface FormRules {
+  maxLength?: FormRuleMaxLengthType;
   required?: boolean;
-  validates?: Array<formItemValidateRules>
+  validates?: Array<FormValidateRules>
 }

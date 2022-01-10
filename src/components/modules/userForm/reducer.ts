@@ -6,6 +6,7 @@ export enum ActionTypes {
   USER_POSITION_CHANGE = 'USER_POSITION_CHANGE',
   USER_SKILLS_CHANGE = 'USER_SKILLS_CHANGE',
 }
+
 export interface FormData {
   userName: string;
   userActive: number;

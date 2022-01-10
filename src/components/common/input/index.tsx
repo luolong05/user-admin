@@ -1,5 +1,5 @@
-import React from "react";
-import InputStyled, { InputSizes, InputTypes } from "./input.styled";
+import React from 'react';
+import InputStyled, { InputSizes, InputTypes } from './input.styled';
 
 export interface InputProps {
   value?: string;
@@ -21,7 +21,7 @@ const Input: React.FC<InputProps> = ({ size, type, htmlType, ...props }) => {
     autoComplete: 'off',
   };
 
-  return <InputStyled {...inputStyledProps} />
-}
+  return <InputStyled {...inputStyledProps} />;
+};
 
 export default Input;

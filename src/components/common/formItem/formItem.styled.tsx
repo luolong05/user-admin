@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import { deviceSize } from "@/config/layout/";
+import styled from 'styled-components';
+import { deviceSize } from '@/config/layout/';
 
 type flexDirection = 'row' | 'column';
 export interface FormItemLabelStyledProps {
-  flexDirection?: flexDirection,
+  flexDirection?: flexDirection;
   labelWidth?: string;
   labelTextAlign?: string;
   labelFontSize?: string;
@@ -19,8 +19,8 @@ export const FormItemWrapStyled = styled.div`
 
 export const FormItemLabelStyled = styled.label<Pick<FormItemLabelStyledProps, 'flexDirection'>>`
   display: flex;
-  flex-direction: ${props => props.flexDirection || 'row'};
-  align-items: ${props => props.flexDirection === 'row' ? 'center' : 'stretch'};
+  flex-direction: ${(props) => props.flexDirection || 'row'};
+  align-items: ${(props) => (props.flexDirection === 'row' ? 'center' : 'stretch')};
   width: 100%;
   @media (max-width: ${deviceSize.pad}) {
     flex-direction: column;
@@ -29,17 +29,17 @@ export const FormItemLabelStyled = styled.label<Pick<FormItemLabelStyledProps, '
 `;
 
 export const FormItemLabelTextStyled = styled.span<FormItemLabelStyledProps>`
-  flex-basis: ${props => {
+  flex-basis: ${(props) => {
     if (props.flexDirection === 'row') {
-      return props.labelWidth || '100px'
+      return props.labelWidth || '100px';
     }
-    
+
     return '100%';
   }};
-  margin: ${props => props.flexDirection === 'row' ? `0 8px 0 0` : `0 0 8px 0`};
-  text-align: ${props => props.labelTextAlign || 'right'};
-  font-size: ${props => props.labelFontSize || props.theme.textDefaultFontSize};
-  color: ${props => props.labelFontColor || props.theme.textDefaultColor};
+  margin: ${(props) => (props.flexDirection === 'row' ? `0 8px 0 0` : `0 0 8px 0`)};
+  text-align: ${(props) => props.labelTextAlign || 'right'};
+  font-size: ${(props) => props.labelFontSize || props.theme.textDefaultFontSize};
+  color: ${(props) => props.labelFontColor || props.theme.textDefaultColor};
   cursor: pointer;
   @media (max-width: ${deviceSize.pad}) {
     flex-basis: 100%;

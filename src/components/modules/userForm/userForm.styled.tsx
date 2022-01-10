@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { deviceSize } from "@/config/layout/";
+import styled from 'styled-components';
+import { deviceSize } from '@/config/layout/';
 
 export const UserFormWrapStyled = styled.div`
   padding: 150px 12px 0;
@@ -21,6 +21,6 @@ export const UserFormResultStyled = styled.div`
   margin-top: 50px;
   margin-bottom: 20px;
   font-size: 16px;
-  color: ${props => props.theme.defaultFontColor};
+  color: ${(props) => props.theme.defaultFontColor};
   text-align: center;
 `;

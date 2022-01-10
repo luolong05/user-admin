@@ -1,10 +1,10 @@
-import React, {useEffect, useMemo, useRef, useState} from "react";
-import Input from "@commonUI/input";
-import {InputSizes, InputTypes} from "@commonUI/input/input.styled";
-import {SelectWrapStyled, SelectDropdownStyled, OptionStyled} from "./select.styled";
-import {ThemeProvider} from "styled-components";
-import baseComponentsTheme from "@/styles/baseComponents/theme";
-import {on, off} from "@/utils/dom";
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import Input from '@commonUI/input';
+import { InputSizes, InputTypes } from '@commonUI/input/input.styled';
+import { SelectWrapStyled, SelectDropdownStyled, OptionStyled } from './select.styled';
+import { ThemeProvider } from 'styled-components';
+import baseComponentsTheme from '@/styles/baseComponents/theme';
+import { on, off } from '@/utils/dom';
 
 export type OptionValueType = string | number;
 export type SelectValueType = OptionValueType | OptionValueType[];
@@ -31,15 +31,7 @@ interface OptionTypeWithSelect extends OptionType {
   selected: boolean;
 }
 
-const Index: React.FC<SelectProps> = ({value: selectValue, multiple, onChange, ...props}) => {
-  const isOptionSelected: (value: OptionValueType) => boolean = value => {
-    if (!multiple) {
-      return value === selectValue;
-    }
-
-    return multipleSelectValue.includes(value);
-  };
-
+const Index: React.FC<SelectProps> = ({ value: selectValue, multiple, onChange, ...props }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const multipleSelectValue = useMemo(() => {
     if (!multiple) {
@@ -50,14 +42,25 @@ const Index: React.FC<SelectProps> = ({value: selectValue, multiple, onChange, .
       return selectValue;
     }
 
-    return selectValue !== '' ?  [ selectValue ] : [];
-  }, [ selectValue, multiple ]);
+    return selectValue !== '' ? [selectValue] : [];
+  }, [selectValue, multiple]);
 
-  const selectOptions: OptionTypeWithSelect[] = useMemo(() =>
-    props.options.map((option: OptionType) => ({
-      ...option,
-      selected: isOptionSelected(option.value)
-    })), [ props.options, selectValue]);
+  const isOptionSelected = (value: OptionValueType): boolean => {
+    if (!multiple) {
+      return value === selectValue;
+    }
+
+    return multipleSelectValue.includes(value);
+  };
+
+  const selectOptions: OptionTypeWithSelect[] = useMemo(
+    () =>
+      props.options.map((option: OptionType) => ({
+        ...option,
+        selected: isOptionSelected(option.value),
+      })),
+    [props.options, selectValue]
+  );
 
   const selectedOptions = useMemo(() => {
     const options = props.options;
@@ -66,16 +69,16 @@ const Index: React.FC<SelectProps> = ({value: selectValue, multiple, onChange, .
     }
 
     if (!multiple) {
-      const selectedOption = selectOptions.find(option => option.value === selectValue);
+      const selectedOption = selectOptions.find((option) => option.value === selectValue);
       return selectedOption ? [selectedOption] : [];
     }
 
-    return multipleSelectValue.map(value => {
-      return options.find(option => option.value === value);
+    return multipleSelectValue.map((value) => {
+      return options.find((option) => option.value === value);
     });
-  }, [ props.options, selectValue, multiple ]);
+  }, [props.options, selectValue, multiple]);
 
-  const handleSingleSelectChange: (option: OptionType) => void = option => {
+  const handleSingleSelectChange = (option: OptionType): void => {
     setShowDropdown(false);
 
     const optionValue: OptionValueType = option.value;
@@ -85,7 +88,7 @@ const Index: React.FC<SelectProps> = ({value: selectValue, multiple, onChange, .
     }
   };
 
-  const handleMultipleSelectChange: (option: OptionType) => void = option => {
+  const handleMultipleSelectChange = (option: OptionType): void => {
     const newValues: OptionValueType[] = [...multipleSelectValue];
     const optionValue: OptionValueType = option.value;
     const index: number = newValues.indexOf(optionValue);
@@ -98,7 +101,7 @@ const Index: React.FC<SelectProps> = ({value: selectValue, multiple, onChange, .
     onChange(newValues);
   };
 
-  const handleOptionClick: (option: OptionType) => void = option => {
+  const handleOptionClick = (option: OptionType): void => {
     if (multiple) {
       handleMultipleSelectChange(option);
     } else {
@@ -115,12 +118,18 @@ const Index: React.FC<SelectProps> = ({value: selectValue, multiple, onChange, .
 
     const handleClickOutside: EventListenerOrEventListenerObject = (event) => {
       const selectWrapDom = selectWrapRef.current;
-      if (!selectWrapDom) { return; }
+      if (!selectWrapDom) {
+        return;
+      }
 
       const target = event.target;
-      if (!(target instanceof HTMLElement)) { return; }
+      if (!(target instanceof HTMLElement)) {
+        return;
+      }
 
-      if (selectWrapDom.contains(target)) { return; }
+      if (selectWrapDom.contains(target)) {
+        return;
+      }
 
       setShowDropdown(false);
     };
@@ -128,33 +137,42 @@ const Index: React.FC<SelectProps> = ({value: selectValue, multiple, onChange, .
     on(document.body, 'click', handleClickOutside);
     return () => {
       off(document.body, 'click', handleClickOutside);
-    }
-  }, [ showDropdown ]);
+    };
+  }, [showDropdown]);
 
-  return <ThemeProvider theme={baseComponentsTheme}>
-    <SelectWrapStyled ref={selectWrapRef} onClick={(e) => { e.preventDefault(); }}>
-      <Input
-        readOnly
-        size={props.size}
-        type={props.type}
-        placeholder={props.placeholder || 'Please select'}
-        value={selectedOptions.map(option => option?.label).join(', ')}
-        onClick={() => setShowDropdown(!showDropdown)}
-      />
-      <SelectDropdownStyled show={showDropdown} size={props.size || 'md'}>
-        {
-          selectOptions.map((option: OptionTypeWithSelect) =>
+  return (
+    <ThemeProvider theme={baseComponentsTheme}>
+      <SelectWrapStyled
+        ref={selectWrapRef}
+        onClick={(e) => {
+          e.preventDefault();
+        }}
+      >
+        <Input
+          readOnly
+          size={props.size}
+          type={props.type}
+          name={props.name}
+          placeholder={props.placeholder || 'Please select'}
+          value={selectedOptions.map((option) => option?.label).join(', ')}
+          onClick={() => setShowDropdown(!showDropdown)}
+        />
+        <SelectDropdownStyled show={showDropdown} size={props.size || 'md'}>
+          {selectOptions.map((option: OptionTypeWithSelect) => (
             <OptionStyled
               key={option.value}
               selected={option.selected}
-              onClick={() => {handleOptionClick(option)}}
+              onClick={() => {
+                handleOptionClick(option);
+              }}
             >
               {option.label}
-            </OptionStyled>)
-        }
-      </SelectDropdownStyled>
-    </SelectWrapStyled>
-  </ThemeProvider>
-}
+            </OptionStyled>
+          ))}
+        </SelectDropdownStyled>
+      </SelectWrapStyled>
+    </ThemeProvider>
+  );
+};
 
 export default Index;

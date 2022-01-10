@@ -1,6 +1,6 @@
-import React from "react";
-import {RadioGroupWrapStyled} from "./radioGroup.styled";
-import Radio, {RadioValueType} from "./radio";
+import React from 'react';
+import { RadioGroupWrapStyled } from './radioGroup.styled';
+import Radio, { RadioValueType } from './radio';
 
 export interface OptionType {
   value: RadioValueType;
@@ -15,10 +15,10 @@ export interface RadioGroupProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const RadioGroup: React.FC<RadioGroupProps> = ({value, options, ...props}) => {
-  return <RadioGroupWrapStyled>
-    {
-      options.map((option: OptionType) =>
+const RadioGroup: React.FC<RadioGroupProps> = ({ value, options, ...props }) => {
+  return (
+    <RadioGroupWrapStyled>
+      {options.map((option: OptionType) => (
         <Radio
           key={option.value}
           name={props.name}
@@ -29,9 +29,9 @@ const RadioGroup: React.FC<RadioGroupProps> = ({value, options, ...props}) => {
         >
           {option.label}
         </Radio>
-      )
-    }
-  </RadioGroupWrapStyled>
+      ))}
+    </RadioGroupWrapStyled>
+  );
 };
 
 export default RadioGroup;
